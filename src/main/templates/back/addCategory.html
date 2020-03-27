@@ -1,0 +1,22 @@
+{% extends 'back/master.html' %}
+{% load static %}
+{% block bodyblock%}
+
+<div class="outer-w3-agile mt-3">
+                    <h4 class="tittle-w3-agileits mb-4">Add Category Form</h4>
+                   <form action="{% url 'addCategory'  %}" class="dropzone dropzone-custom needsclick add-professors"  ENCTYPE="multipart/form-data" method="POST" id="">
+                         {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Name</label>
+                                <input type="text" class="form-control" value="{{i.name}}" id="inputName" name="name" placeholder="Name" required="">
+                            </div>
+
+
+
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                    </form>
+                </div>
+
+
+{% endblock %}

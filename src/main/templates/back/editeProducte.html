@@ -1,0 +1,81 @@
+{% extends 'back/master.html' %}
+{% load static %}
+{% block bodyblock%}
+<div class="outer-w3-agile mt-3">
+                    <h4 class="tittle-w3-agileits mb-4">Add Producte Form</h4>
+
+                   <form action="{% url 'ediTP'  pk=editP.pk %}" class="dropzone dropzone-custom needsclick add-professors"  ENCTYPE="multipart/form-data" method="POST" id="">
+                         {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Name</label>
+                                <input type="text" class="form-control" value="{{editP.name}}" id="inputName" name="name" placeholder="Name" required="">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Stats</label>
+                                <input type="text" class="form-control" id="inputEmail4"  value="{{editP.stats}}" name="stats" placeholder="Stats" required="">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4"> Price</label>
+                                <input type="text" class="form-control" id="inputPassword4" name="price" value="{{editP.pric}}" placeholder="Price " required="">
+                            </div>
+
+                        <div class="form-group  col-md-12">
+                            <label for="inputAddress">Size</label>
+                            <input type="text" class="form-control" id="inputAddress" name="size" value="{{editP.size}}" placeholder="size" required="">
+                        </div>
+
+                             <div class="form-group  col-md-12">
+                            <label for="inputAddress">Description</label>
+                            <input type="text" class="form-control" id="inputAddress" name="description"  value="{{editP.description}}" placeholder="description" required="">
+                        </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                               <label for="inputAddress">Image</label>
+                                <div class="form-group">
+                               <input name="myImg" type="file" class="form-control" placeholder="New image">
+                             </div>
+                        </div>
+                        </div>
+
+<!--                        <div class="form-group">-->
+<!--                            <label for="inputAddress2"> </label>-->
+<!--                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" required="">-->
+<!--                        </div>-->
+<!--                        <div class="form-row">-->
+<!--                            <div class="form-group col-md-6">-->
+<!--                                <label for="inputCity">City</label>-->
+<!--                                <input type="text" class="form-control" id="inputCity" required="">-->
+<!--                            </div>-->
+<!--                            <div class="form-group col-md-4">-->
+<!--                                <label for="inputState">State</label>-->
+<!--                                <select id="inputState" class="form-control">-->
+<!--                                    <option selected="">Choose...</option>-->
+<!--                                    <option>...</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                            <div class="form-group col-md-2">-->
+<!--                                <label for="inputZip">Zip</label>-->
+<!--                                <input type="text" class="form-control" id="inputZip" required="">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <div class="form-check">-->
+<!--                                <input class="form-check-input" type="checkbox" id="gridCheck">-->
+<!--                                <label class="form-check-label" for="gridCheck">-->
+<!--                                    Check me out-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                       <div>
+                           			      <img src="{{editP.picurl}}"  height="100" width="100" class="img-fluid img-thumbnail" alt="Sheep">
+
+                       </div>
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                    </form>
+
+                </div>
+                <!--// Forms-3 -->
+
+
+{% endblock %}

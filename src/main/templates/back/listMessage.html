@@ -1,0 +1,55 @@
+{% extends 'back/master.html' %}
+{% load static %}
+{% block bodyblock%}
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Message  table</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center"> Name</th>
+            <th class="text-center">Tel</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">subject</th>
+            <th class="text-center">Message</th>
+
+            <th class="text-center">Edite</th>
+            <th class="text-center">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in cont%}
+          <tr>
+            <td class="pt-3-half" contenteditable="true">{{ i.name}}</td>
+            <td class="pt-3-half" contenteditable="true">{{ i.tel}}</td>
+            <td class="pt-3-half" contenteditable="true">{{i.email}}</td>
+            <td class="pt-3-half" contenteditable="true">{{i.subject}}</td>
+            <td class="pt-3-half" contenteditable="true">{{i.message}}</td>
+
+            <td class="pt-3-half">
+                <a href=" {%url 'ediTP' pk=i.pk  %}" > <span class="table-edit"><button type="button"
+                  class="btn btn-primary btn-rounded btn-sm my-0">Edite</button></span></a>
+
+            </td>
+            <td>
+             <a  href=" {%url 'deleteMessage' pk=i.pk  %}" > <span class="table-remove"><button type="button"
+                  class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span></a>
+            </td>
+          </tr>
+        {% endfor%}
+          <!-- This is our clonable table line -->
+
+          <!-- This is our clonable table line -->
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->
+
+
+{% endblock %}
