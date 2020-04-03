@@ -134,10 +134,13 @@ def deteteP(request,pk):
 def addCategory(request):
     if request.method == 'POST':
         name = request.POST.get('name')
+        print(name)
         if name != '':
             try:
                 b = category(name = name)
                 b.save()
+                print(b);
+                print("this is new")
             except:
                 error = 'there is some worng'
                 return render(request,'back/error.html',{'error':error})
