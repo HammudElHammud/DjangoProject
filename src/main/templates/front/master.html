@@ -15,7 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="{% static  'products.html">Today's special Offers !</a>
+			<a href="">Today's special Offers !</a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -39,8 +39,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="{% static  'login.html">Login</a></li>
-								<li><a href="{% static  'login.html">Sign Up</a></li>
+								<li><a href="login.html">Login</a></li>
+								<li><a href="login.html">Sign Up</a></li>
 							</ul>
 						</div>
 					</div>
@@ -48,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="{% static  'mail.html">Contact Us</a></h2>
+			<h2><a href="/contantus">Contact Us</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -71,14 +71,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="{% static  'index.html"><span>Grocery</span> Store</a></h1>
+				<h1><a href="/home"><span>Grocery</span> Store</a></h1>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
-					<li><a href="{% static  'events.html">Events</a><i>/</i></li>
-					<li><a href="{% static  'about.html">About Us</a><i>/</i></li>
-					<li><a href="{% static  'products.html">Best Deals</a><i>/</i></li>
-					<li><a href="{% static  'services.html">Services</a></li>
+					<li><a href="">Events</a><i>/</i></li>
+					<li><a href="/aboutus">About Us</a><i>/</i></li>
+					<li><a href="">Best Deals</a><i>/</i></li>
+					<li><a href="">Services</a></li>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">
@@ -92,6 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 <!-- //header -->
 <!-- banner -->
+
 	<div class="banner">
 		<div class="w3l_banner_nav_left">
 			<nav class="navbar nav_bottom">
@@ -123,33 +124,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li><a href="{% static  'kitchen.html">Kitchen</a></li>
 						<li><a href="{% static  'short-codes.html">Short Codes</a></li>
 						<li class="dropdown">
-							<a href="{% static  '#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>
-										<li><a href="{% static  'drinks.html">Soft Drinks</a></li>
-										<li><a href="{% static  'drinks.html">Juices</a></li>
+										<li><a href="drinks.html">Soft Drinks</a></li>
+										<li><a href="drinks.html">Juices</a></li>
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><a href="{% static  'pet.html">Pet Food</a></li>
+						<li><a href="pet.html">Pet Food</a></li>
 						<li class="dropdown">
-							<a href="{% static  '#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>
-										<li><a href="{% static  'frozen.html">Frozen Snacks</a></li>
-										<li><a href="{% static  'frozen.html">Frozen Nonveg</a></li>
+										<li><a href="frozen.html">Frozen Snacks</a></li>
+										<li><a href="frozen.html">Frozen Nonveg</a></li>
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><a href="{% static  'bread.html">Bread & Bakery</a></li>
+						<li><a href="bread.html">Bread & Bakery</a></li>
 					</ul>
 				 </div><!-- /.navbar-collapse -->
 			</nav>
+
 		</div>
+
+
 		{% block saidbar%}
 		{% endblock%}
 {% block mainblock%}
@@ -202,7 +206,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
 					<div class="w3_footer_grid_bottom">
 						<h4>100% secure payments</h4>
-						<img src="{% static  'front/images/card.png" alt=" " class="img-responsive" />
+						<img src="{% static 'front/images/card.png' %}" alt=" " class="img-responsive" />
 					</div>
 				</div>
 				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
@@ -226,38 +230,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
-<script src="{% static  'front/js/bootstrap.min.js' %}"></script>
-<script>
-$(document).ready(function(){
-    $(".dropdown").hover(
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');
-        },
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');
-        }
-    );
-});
-</script>
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
-
-			$().UItoTop({ easingType: 'easeOutQuart' });
-
-			});
-	</script>
-<!-- //here ends scrolling icon -->
+{#<script src="{% static 'front/js/bootstrap.min.js' %}"> </script>#}
+{#<script>#}
+{#$(document).ready(function(){#}
+{#    $(".dropdown").hover(#}
+{#        function() {#}
+{#            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");#}
+{#            $(this).toggleClass('open');#}
+{#        },#}
+{#        function() {#}
+{#            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");#}
+{#            $(this).toggleClass('open');#}
+{#        }#}
+{#    );#}
+{#});#}
+{#</script>#}
+{#<!-- here stars scrolling icon -->#}
+{#	<script type="text/javascript">#}
+{#		$(document).ready(function() {#}
+{#			/*#}
+{#				var defaults = {#}
+{#				containerID: 'toTop', // fading element id#}
+{#				containerHoverID: 'toTopHover', // fading element hover id#}
+{#				scrollSpeed: 1200,#}
+{#				easingType: 'linear'#}
+{#				};#}
+{#			*/#}
+{##}
+{#			$().UItoTop({ easingType: 'easeOutQuart' });#}
+{##}
+{#			});#}
+{#	</script>#}
+{#<!-- //here ends scrolling icon -->#}
 <script src="{% static  'front/js/minicart.js' %}"></script>
 <script>
 		paypal.minicart.render();

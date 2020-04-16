@@ -8,16 +8,18 @@ from contentus.models import Contentus
 
 
 def home(request):
+    pageName = 'Home page '
     set = Main.objects.filter(pk = 2)
     cat = category.objects.all()
     sale = Forslar.objects.all()
     print(sale)
 
-    return render(request,'front/home.html',{'sale':sale, 'cat':cat ,'set':set})
+    return render(request,'front/home.html',{'sale':sale, 'cat':cat ,'set':set, 'title':pageName})
 
 def aboutus(request):
+    pageName = 'AboutUs pange'
     set = Main.objects.filter(pk = 2)
-    return render(request,'front/about.html',{'set':set})
+    return render(request,'front/about.html',{'set':set,'title':pageName})
 
 def producte(request,pk):
     sale =  Forslar.objects.filter(pk=pk)
@@ -175,6 +177,7 @@ def setting(request):
 
     return render(request,'back/setting.html',{'set':set})
 def contantus(request):
+     pageName = 'ContenUs'
      set = Main.objects.filter(pk = 2)
      if request.method == 'POST':
           name = request.POST.get('name')
@@ -186,12 +189,7 @@ def contantus(request):
               b = Contentus(name =name, email = email ,tel = tel ,subject = subjeste,message = message)
               b.save()
 
-
-
-
-
-
-     return render(request,'front/contantus.html',{'set':set})
+     return render(request,'front/contantus.html',{'set':set,'title':pageName})
 
 def listMessage(request):
     cont = Contentus.objects.all()
