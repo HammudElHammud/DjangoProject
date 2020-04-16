@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.utils.safestring import mark_safe
+from mptt.models import MPTTModel, TreeForeignKey
 
 
-class Category(models.Model):
+class Category(MPTTModel):
     STATUS = (
         ('True', 'Evet'),
         ('False', 'Hayir'),
@@ -16,13 +17,22 @@ class Category(models.Model):
     description = models.CharField(max_length=200, default="")
     image = models.ImageField(blank=True,upload_to='images/')
     slug = models.SlugField()
-    parant = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
     # createAt = models.DateTimeField(auto_now_add=True)
     # updateAt = models.DateTimeField(auto_now=True)
 
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     def __str__(self):
-        return self.name
+        full_path  = [self.name]
+        k = self.parent
+        while k is not  None:
+            full_path.append(k.name)
+            k = k.parent
+        return  '>>'  .join(full_path[ :: -1])
+
+
     def image_tag(self):
         return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
     image_tag.short_description = 'Image'
@@ -41,17 +51,17 @@ class Forslar(models.Model):
     )
     name = models.CharField(default='',max_length=40)
     stats = models.CharField(default='',max_length=40,choices=STATUS)
-    category = models.CharField(default='',max_length=40)
+    # category = models.CharField(default='',max_length=40)
     categoryadmin = models.ForeignKey(Category,on_delete=models.CASCADE, null=True, blank=True)
     pric  = models.IntegerField(default=0)
     amount  = models.IntegerField(default='')
     image = models.ImageField(blank=True,upload_to='images/')
     size = models.CharField(default='',max_length= 40)
-    picurl = models.TextField(max_length=50, default="")
-    picname = models.TextField(max_length=50, default="")
+    # picurl = models.TextField(max_length=50, default="")
+    # picname = models.TextField(max_length=50, default="")
     description = models.CharField(max_length=200,default="")
     slug = models.SlugField()
-    parant = models.ForeignKey('self', blank= True,null=True,related_name='children',on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', blank= True,null=True,related_name='children',on_delete=models.CASCADE)
     # createAt = models.DateField(default=timezone.now())
     # updateAt = models.DateField(default=timezone.now())
     def __str__(self):

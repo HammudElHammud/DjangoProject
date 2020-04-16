@@ -11,7 +11,7 @@ def home(request):
     pageName = 'Home page '
     set = Main.objects.filter(pk = 2)
     cat = category.objects.all()
-    sale = Forslar.objects.all()
+    sale = Forslar.objects.all()[:3]
     print(sale)
 
     return render(request,'front/home.html',{'sale':sale, 'cat':cat ,'set':set, 'title':pageName})

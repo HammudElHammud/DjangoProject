@@ -79,14 +79,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li><a href="/aboutus">About Us</a><i>/</i></li>
 					<li><a href="">Best Deals</a><i>/</i></li>
 					<li><a href="">Services</a></li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+
 				</ul>
 			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="{% static  'mailto:store@grocery.com">store@grocery.com</a></li>
-				</ul>
-			</div>
+
 			<div class="clearfix"> </div>
 		</div>
 	</div>
@@ -94,6 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- banner -->
 
 	<div class="banner">
+        {% if title == "Home page " %}
 		<div class="w3l_banner_nav_left">
 			<nav class="navbar nav_bottom">
 			 <!-- Brand and toggle get grouped for better mobile display -->
@@ -150,6 +149,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</ul>
 				 </div><!-- /.navbar-collapse -->
 			</nav>
+        {% endif %}
 
 		</div>
 
