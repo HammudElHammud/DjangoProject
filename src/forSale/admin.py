@@ -11,9 +11,9 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ['stats']
 
 class FordslarAdmin(admin.ModelAdmin):
-    list_display = ['name','categoryadmin','pric', 'image_tag','amount']
+    list_display = ['name','category','pric', 'image_tag','amount']
     readonly_fields = ['image_tag']
-    list_filter = ['stats','categoryadmin']
+    list_filter = ['stats','category']
     inlines = [ProductImagesInline]
 
 class ImagesAdmin(admin.ModelAdmin):

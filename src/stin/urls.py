@@ -26,6 +26,10 @@ urlpatterns = [
     url(r'^aboutus/$',views.aboutus,name='aboutus'),
     url(r'^panel/listproducte/$',views.listProducte,name='listproducte'),
     url(r'^home/producte/(?P<pk>\d+)/$', views.producte, name='producte'),
+    url(r'^home/producteCategory/(?P<pk>\d+)/$', views.producteCategory, name='producteCategory'),
+    url(r'^login/$', views.login, name='login'),
+    url(r'^logout/$', views.logout, name='logout'),
+    url(r'^register/$', views.register, name='register'),
     url(r'^panel/deleteMessage/(?P<pk>\d+)/$', views.deleteMessage, name='deleteMessage'),
     url(r'^panel/ediTP/(?P<pk>\d+)/$', views.ediTP, name='ediTP'),
     url(r'^panel/deteteP/(?P<pk>\d+)/$', views.deteteP, name='deteteP'),
@@ -36,6 +40,7 @@ urlpatterns = [
     url(r'^panel/listMessage/',views.listMessage,name='listMessage'),
     url(r'^panel/listCategory/$',views.listCategory,name='listCategory'),
     url(r'^panel/addProducte/$', views.addProducte, name='addProducte'),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
 ]
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load mptt_tags %}
 
 
 <!--
@@ -32,15 +33,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </fieldset>
             </form>
 		</div>
-		<div class="w3l_header_right">
+		<div class="w3l_header_right" >
 			<ul>
 				<li class="dropdown profile_details_drop">
-					<a href="{% static  '#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
-					<div class="mega-dropdown-menu">
+					<a href= class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+					<div class="mega-dropdown-menu" style="width: 200px">
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="login.html">Login</a></li>
-								<li><a href="login.html">Sign Up</a></li>
+                                {% if  %}
+								<li><a href="login.html">MY ACCOUNT </a></li>
+								<li><a href="login.html"> MY WISHLIST</a></li>
+								<li><a href="login.html">CREATE ACCOUNT </a></li>
+								<li><a href="login.html">MY COMMENT </a></li>
+								<li><a href="/login">Sign Up</a></li>
+								<li><a href="/logout">LIG OUT</a></li>
 							</ul>
 						</div>
 					</div>
@@ -92,12 +98,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- banner -->
 
 	<div class="banner">
-        {% if title == "Home page " %}
+        {% if title == "Home page " or title == 'Category pange'  %}
+
+
 		<div class="w3l_banner_nav_left">
 			<nav class="navbar nav_bottom">
 			 <!-- Brand and toggle get grouped for better mobile display -->
 			  <div class="navbar-header nav_2">
-				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-mega-dropdown-tabs">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -105,50 +113,100 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				  </button>
 			   </div>
 			   <!-- Collect the nav links, forms, and other content for toggling -->
+
+
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
-						<li><a href="{% static  'products.html">Branded Foods</a></li>
-						<li><a href="{% static  'household.html">Households</a></li>
-						<li class="dropdown mega-dropdown active">
-							<a href="{% static  '#" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>
-							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-								<div class="w3ls_vegetables">
-									<ul>
-										<li><a href="{% static  'vegetables.html">Vegetables</a></li>
-										<li><a href="{% static  'vegetables.html">Fruits</a></li>
-									</ul>
-								</div>
+{#  					<li><a href="products.html">Branded Foods</a></li>#}
+{#						<li><a href="household.html">Households</a></li>#}
+{##}
+{#                         <ul>#}
+{#                        {% recursetree cate %}#}
+{#						<li class="dropdown mega-dropdown active">#}
+{#                        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ node.name }}<span class="caret"></span></a>#}
+{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+{#								<div class="w3ls_vegetables">#}
+{#									<ul>#}
+{#                                  {% if not node.is_leaf_node %}#}
+{#                                         <ul class="children">#}
+{#                                             <li><a href="">{{ children }}</a></li>#}
+{##}
+{##}
+{#                                          </ul>#}
+{#                                     {% endif %}#}
+{##}
+{#                                        </div>#}
+{#							</div>#}
+{#						</li>#}
+{#                              {% endrecursetree %}#}
+{#                         </ul>#}
+{##}
+{##}
+{#						<li class="dropdown mega-dropdown active">#}
+{#							<a href="" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>#}
+{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+{#								<div class="w3ls_vegetables">#}
+{#									<ul>#}
+{#										<li><a href="vegetables.html">Vegetables</a></li>#}
+{#										<li><a href="vegetables.html">Fruits</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#							</div>#}
+{#						</li>#}
+{#						<li><a href="kitchen.html">Kitchen</a></li>#}
+{#						<li><a href="short-codes.html">Short Codes</a></li>#}
+
+                    {% load mptt_tags %}
+
+                               {% recursetree cate %}
+                                  <li class="dropdown">
+                                  <a href="/home/producteCategory/{{ node.id }}" class="dropdown-toggle"  {% if not node.is_leaf_node %} data-toggle="dropdown"  {% endif %}>{{ node.name }}<span class="caret"></span></a>
+						        	<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+							        	<div class="w3ls_vegetables">
+						   		      <ul>
+
+
+                                          {% if not node.is_leaf_node %}
+{#                                          <ul class="children">#}
+                                          <li><a href="/home/producteCategory/{{ node.id }}">{{ children }}</a></li>
+
+                                                </ul>
+                                             {% endif %}
+                                               </div>
 							</div>
 						</li>
-						<li><a href="{% static  'kitchen.html">Kitchen</a></li>
-						<li><a href="{% static  'short-codes.html">Short Codes</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
-							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-								<div class="w3ls_vegetables">
-									<ul>
-										<li><a href="drinks.html">Soft Drinks</a></li>
-										<li><a href="drinks.html">Juices</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li><a href="pet.html">Pet Food</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
-							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-								<div class="w3ls_vegetables">
-									<ul>
-										<li><a href="frozen.html">Frozen Snacks</a></li>
-										<li><a href="frozen.html">Frozen Nonveg</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li><a href="bread.html">Bread & Bakery</a></li>
+                                         {% endrecursetree %}
+                                       </ul>
+
+
+{#						<li class="dropdown">#}
+{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>#}
+{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+{#								<div class="w3ls_vegetables">#}
+{#									<ul>#}
+{#										<li><a href="drinks.html">Soft Drinks</a></li>#}
+{#										<li><a href="drinks.html">Juices</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#							</div>#}
+{#						</li>#}
+{#						<li><a href="pet.html">Pet Food</a></li>#}
+{#						<li class="dropdown">#}
+{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>#}
+{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+{#								<div class="w3ls_vegetables">#}
+{#									<ul>#}
+{#										<li><a href="frozen.html">Frozen Snacks</a></li>#}
+{#										<li><a href="frozen.html">Frozen Nonveg</a></li>#}
+{#									</ul>#}
+{#								</div>#}
+{#							</div>#}
+{#						</li>#}
+{#						<li><a href="bread.html">Bread & Bakery</a></li>#}
 					</ul>
 				 </div><!-- /.navbar-collapse -->
 			</nav>
+
         {% endif %}
 
 		</div>

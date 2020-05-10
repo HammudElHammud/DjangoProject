@@ -1,20 +1,28 @@
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Main
-from forSale.models import Forslar
+from forSale.models import Forslar,Category
 from category.models import category
 from contentus.models import Contentus
+from django.contrib.auth import authenticate,login, logout
+from django.contrib import auth
+from django.contrib.auth.models import User
+
+
+
 
 
 
 def home(request):
     pageName = 'Home page '
-    set = Main.objects.filter(pk = 2)
-    cat = category.objects.all()
+    set = Main.objects.filter(pk = 1)
+    cate = Category.objects.all()
     sale = Forslar.objects.all()[:3]
-    print(sale)
+    nod = Forslar.objects.all()
+    print(   type(cate ))
+    print(set)
 
-    return render(request,'front/home.html',{'sale':sale, 'cat':cat ,'set':set, 'title':pageName})
+    return render(request,'front/home.html',{'sale':sale, 'cate':  Category.objects.all(),'set':set, 'title':pageName,'nod':nod})
 
 def aboutus(request):
     pageName = 'AboutUs pange'
@@ -22,16 +30,80 @@ def aboutus(request):
     return render(request,'front/about.html',{'set':set,'title':pageName})
 
 def producte(request,pk):
+    pageName = 'producte Page'
     sale =  Forslar.objects.filter(pk=pk)
-    return render(request,'front/producte.html',{'sale':sale})
+    dayproducte = Forslar.objects.all()[:3]
+    lastproducte = Forslar.objects.all()[:2]
+    return render(request,'front/producte.html',{'sale':sale,'dayproducte':dayproducte,'lastproduct':lastproducte,'title':pageName})
 
 def panel(request):
 
     return render(request,'back/home.html')
 def forsale(requset,pk):
     sale =  Forslar.objects.filter(pk=pk)
-    print(sale)
     return render(requset,'front/home.html',{'sale':sale})
+
+
+
+
+def login(request):
+    pageName = 'Home page '
+    cate = Category.objects.all()
+    if request.method == 'POST':
+        uuser = request.POST.get('Username')
+        ppassword = request.POST.get('Password')
+        if uuser != '' and ppassword != '':
+            user = authenticate(username = uuser,password = ppassword)
+
+            if user is not None:
+
+                auth.login(request,user)
+                return render(request,'front/login.html')
+
+
+    return render(request,'front/home.html',{'title':pageName,'cate':cate})
+
+def logout(request):
+    auth.logout(request)
+    return render(request,'front/login.html')
+
+
+def register(request):
+    pageName = 'Home page '
+    cate = Category.objects.all()
+    if request.method == 'POST':
+        username = request.POST.get('Username')
+        useremail = request.POST.get('Email')
+        userpassword = request.POST.get('Password')
+        userconfpass = request.POST.get('confpassword')
+        if username != '' and useremail != '' and userpassword != '' and userconfpass != '':
+            if userpassword == userconfpass:
+                if len(User.objects.filter(username=username)) == 0 and len(User.objects.filter(email=useremail)) == 0:
+                    user = User.objects.create_user(username, useremail, userpassword)
+
+
+    return render(request, 'front/home.html',{'title':pageName,'cate':cate})
+
+
+
+
+
+
+
+
+
+def producteCategory(request,pk):
+    pageName = 'Category pange'
+    cate = Category.objects.all()
+    categoryData = Category.objects.get(pk= pk)
+    produ = Forslar.objects.filter(category_id = pk)
+
+
+
+    return render(request,'front/producteCategory.html',{'cate':cate,'produ':produ,'title':pageName,'categoryData':categoryData})
+
+
+
 def addProducte(requset):
     cat = category.objects.all()
     if requset.method == 'POST':
