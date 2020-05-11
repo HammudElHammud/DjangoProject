@@ -65,7 +65,7 @@ class Forslar(models.Model):
     # picurl = models.TextField(max_length=50, default="")
     # picname = models.TextField(max_length=50, default="")
     description = RichTextUploadingField()
-    # detail = RichTextUploadingField()
+    detail = RichTextUploadingField()
 
     slug = models.SlugField()
     parent = models.ForeignKey('self', blank= True,null=True,related_name='children',on_delete=models.CASCADE)

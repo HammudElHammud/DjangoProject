@@ -26,7 +26,7 @@ def home(request):
 
 def aboutus(request):
     pageName = 'AboutUs pange'
-    set = Main.objects.filter(pk = 2)
+    set = Main.objects.filter(pk = 1)
     return render(request,'front/about.html',{'set':set,'title':pageName})
 
 def producte(request,pk):
@@ -250,7 +250,7 @@ def setting(request):
     return render(request,'back/setting.html',{'set':set})
 def contantus(request):
      pageName = 'ContenUs'
-     set = Main.objects.filter(pk = 2)
+     set = Main.objects.filter(pk = 1)
      if request.method == 'POST':
           name = request.POST.get('name')
           email = request.POST.get('Email')

@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% for i in set%}
 		<div class="privacy about">
 			<h3>About Us</h3>
-			<p>{{i.about}}</p>
+			<p>{{i.about | safe}}</p>
 			<p class="animi">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
 				praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
 				excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
