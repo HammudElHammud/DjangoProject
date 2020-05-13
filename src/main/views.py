@@ -1,6 +1,6 @@
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Main
+from .models import Main,UserProfile
 from forSale.models import Forslar,Category
 from category.models import category
 from contentus.models import Contentus
@@ -83,6 +83,52 @@ def register(request):
 
 
     return render(request, 'front/home.html',{'title':pageName,'cate':cate})
+
+
+
+def userPage(request):
+
+    return render(request, 'front/UserPage.html')
+def UserProfil(request):
+    userinfo = UserProfile.objects.get(pk =request.user.id)
+
+
+    return  render(request,'front/userProfil.html',{'userinfo':userinfo})
+
+def userUpdate(request):
+    userinfo = UserProfile.objects.get(pk=request.user.id)
+
+    return render(request,'front/userUpdate.html',{'userInfp':userinfo})
+def userChangePassword(request):
+    userinfo = UserProfile.objects.get(pk=request.user.id)
+
+    if request.method == 'POST':
+        oldPassword  = request.POST.get('oldpassword')
+        newPassword  = request.POST.get('newpassword')
+        if oldPassword != '' and newPassword != '':
+
+          user = authenticate(username=request.user, password=oldPassword)
+          if user is not None:
+              user = User.objects.get(username=request.user)
+              user.set_password(newPassword)
+              user.save()
+              return render(request,'front/login.html')
+          else:
+             print("nnnnoooooooooooooo")
+
+
+        print(oldPassword)
+        print(newPassword)
+
+    return  render(request,'front/userChangePassword.html',{'userInfo': userinfo})
+
+
+def userAddProducte(request):
+
+    return render(request,'front/userAddProducte.html')
+
+
+
 
 
 

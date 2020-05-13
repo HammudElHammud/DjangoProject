@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'contentus',
     'mptt',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'user'
 ]
 
 MIDDLEWARE = [
