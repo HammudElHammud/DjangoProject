@@ -87,8 +87,11 @@ def register(request):
 
 
 def userPage(request):
+    pageName = 'User page '
+    cate = Category.objects.all()
 
-    return render(request, 'front/UserPage.html')
+
+    return render(request, 'front/UserPage.html',{'title':pageName,'cate':cate})
 def UserProfil(request):
     userinfo = UserProfile.objects.get(pk =request.user.id)
 
@@ -124,8 +127,38 @@ def userChangePassword(request):
 
 
 def userAddProducte(request):
+    pageName = 'User page '
+    cate = Category.objects.all()
 
-    return render(request,'front/userAddProducte.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        size = request.POST.get('size')
+        amount = request.POST.get('amount')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        detail = request.POST.get('detail')
+        status = request.POST.get('status')
+        categoryId = request.POST.get('category')
+        image = request.FILES.get('image')
+        category = Category.objects.get(pk = categoryId)
+        if status == 0:
+            status= "evet"
+        else:
+         status = "hayir"
+        userOwner =  User.objects.get(username=request.user)
+
+        b = Forslar(userOwner = userOwner,name = name,stats = status,category = category,pric = price,amount = amount,image = image,size = size,description = description,detail =detail,slug = name,parent = None)
+        b.save()
+        return render(request,'front/home.html',{'cate':cate,'title':pageName})
+
+
+
+
+
+
+
+    return render(request,'front/userAddProducte.html',{'cate':cate,'title':pageName})
 
 
 

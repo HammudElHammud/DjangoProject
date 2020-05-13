@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from mptt.models import MPTTModel, TreeForeignKey
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -53,10 +54,11 @@ class Forslar(models.Model):
         ('False','Hayir'),
 
     )
+    userOwner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(default='',max_length=40)
     stats = models.CharField(default='',max_length=40,choices=STATUS)
     # category = models.CharField(default='',max_length=40)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey('Category',on_delete=models.CASCADE, null=True, blank=True)
     pric  = models.IntegerField(default=0)
     amount  = models.IntegerField(default='')
     image = models.ImageField(blank=True,upload_to='images/',null=False)
