@@ -93,18 +93,38 @@ def userPage(request):
 
     return render(request, 'front/UserPage.html',{'title':pageName,'cate':cate})
 def UserProfil(request):
-    userinfo = UserProfile.objects.get(pk =request.user.id)
+    userinfo = UserProfile.objects.get(user=request.user)
 
 
     return  render(request,'front/userProfil.html',{'userinfo':userinfo})
 
 def userUpdate(request):
-    userinfo = UserProfile.objects.get(pk=request.user.id)
+    userinfo = UserProfile.objects.get(user=request.user)
+    if request.method == 'POST':
+        userName = request.POST.get('name')
+        userphone = request.POST.get('phone')
+        useremail = request.POST.get('email')
+        usercity = request.POST.get('city')
+        usercountry = request.POST.get('country')
+        useraddress = request.POST.get('address')
+        userimage = request.FILES.get('image')
+        b = UserProfile.objects.get(user=request.user)
+        b.image = userimage
+        b.user = request.user
+        b.phone = userphone
+        b.city = usercity
+        b.country = usercountry
+        print(userinfo)
+        b.save()
+        userinfo = UserProfile.objects.get(user=request.user)
+        return redirect('/userProfile/')
 
+        return render(request,'front/userProfil.html',{'userInfo':userinfo})
+    userinfo = UserProfile.objects.get(user=request.user)
     return render(request,'front/userUpdate.html',{'userInfp':userinfo})
-def userChangePassword(request):
-    userinfo = UserProfile.objects.get(pk=request.user.id)
 
+def userChangePassword(request):
+    userinfo = UserProfile.objects.get(user=request.user)
     if request.method == 'POST':
         oldPassword  = request.POST.get('oldpassword')
         newPassword  = request.POST.get('newpassword')
@@ -119,9 +139,6 @@ def userChangePassword(request):
           else:
              print("nnnnoooooooooooooo")
 
-
-        print(oldPassword)
-        print(newPassword)
 
     return  render(request,'front/userChangePassword.html',{'userInfo': userinfo})
 

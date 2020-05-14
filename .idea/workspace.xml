@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ab907ab7-58f9-4290-86e9-0a7a6eb087b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forSale/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forSale/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/master.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,22 +120,17 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@3346bf93" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@4d3e313c" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@3d4c6835" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@2692659b" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@43e5527b" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@5f7e47d1" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@86e9090" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -162,7 +155,7 @@
       <workItem from="1587215290492" duration="626000" />
       <workItem from="1588676447628" duration="8722000" />
       <workItem from="1588935191471" duration="46523000" />
-      <workItem from="1589311043321" duration="42742000" />
+      <workItem from="1589311043321" duration="52136000" />
     </task>
     <task id="LOCAL-00001" summary="slider and page navigations">
       <created>1587063226297</created>
@@ -206,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589374251612</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="user profile change password update">
+      <created>1589404392929</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589404392929</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +234,8 @@
     <MESSAGE value="sing up" />
     <MESSAGE value="user profile image start" />
     <MESSAGE value="user profile change password" />
-    <option name="LAST_COMMIT_MESSAGE" value="user profile change password" />
+    <MESSAGE value="user profile change password update" />
+    <option name="LAST_COMMIT_MESSAGE" value="user profile change password update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="23" key="#Servers" timestamp="1589142119393">
@@ -253,42 +254,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588964325537" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589374249694">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589404391505">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589374249694" />
-    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1589147579647">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589404391505" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1589411646045">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1366.728@0.0.1366.728" timestamp="1589147579647" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1366.728@0.0.1366.728" timestamp="1589411646045" />
     <state x="465" y="109" key="FileChooserDialogImpl" timestamp="1588692518484">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="465" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588692518484" />
-    <state width="905" height="232" key="GridCell.Tab.0.bottom" timestamp="1589148986604">
+    <state width="905" height="203" key="GridCell.Tab.0.bottom" timestamp="1589411750879">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="232" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589148986604" />
-    <state width="905" height="232" key="GridCell.Tab.0.center" timestamp="1589148986604">
+    <state width="905" height="203" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589411750879" />
+    <state width="905" height="203" key="GridCell.Tab.0.center" timestamp="1589411750879">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="232" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589148986604" />
-    <state width="905" height="232" key="GridCell.Tab.0.left" timestamp="1589148986604">
+    <state width="905" height="203" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589411750879" />
+    <state width="905" height="203" key="GridCell.Tab.0.left" timestamp="1589411750879">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="232" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589148986604" />
-    <state width="905" height="232" key="GridCell.Tab.0.right" timestamp="1589148986604">
+    <state width="905" height="203" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589411750879" />
+    <state width="905" height="203" key="GridCell.Tab.0.right" timestamp="1589411750879">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="232" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589148986604" />
+    <state width="905" height="203" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589411750879" />
     <state x="186" y="10" key="SettingsEditor" timestamp="1587058437861">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="10" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587058437861" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587070492828">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589404405232">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587070492828" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589404405232" />
     <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1589311043630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
