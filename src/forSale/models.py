@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.forms import ModelForm
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
@@ -93,6 +94,33 @@ class Images(models.Model):
     def image_tag(self):
         return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
     image_tag.short_description = 'Image'
+
+
+class Comment(models.Model):
+    STATUS = (
+        ('True', 'Evet'),
+        ('False', 'Hayir'),
+
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE ,null=True ,blank=True)
+    status = models.CharField(default='', max_length=40, choices=STATUS)
+    product = models.ForeignKey(Forslar,on_delete=models.CASCADE,null=True ,blank=True)
+    subject =  models.TextField(max_length=80,blank=True)
+    comment =  models.TextField(max_length=200,blank=True)
+    rate = models.IntegerField(blank=True)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+
+
+
+    def __str__(self):
+        return self.subject
+
+
+# class CommentForm(ModelForm):
+#     class Meta:
+#         model = Comment
+#         fields = ['subject','comment','rate']
 
 
 

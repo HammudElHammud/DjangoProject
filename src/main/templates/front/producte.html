@@ -43,427 +43,861 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 {% block mainblock%}
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+  <head>
 
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{##}
+{#    <title>eCommerce Product Detail</title>#}
+{#    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">#}
+{#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">#}
+      <style>
 
+/*****************globals*************/
+{#body {#}
+{#  font-family: 'open sans';#}
+{#  overflow-x: hidden; }#}
 
-{% for i in sale%}
+img {
+  max-width: 100%; }
 
-		<div class="w3l_banner_nav_right">
+.preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media screen and (max-width: 996px) {
+    .preview {
+      margin-bottom: 20px; } }
 
-			<div class="agileinfo_single">
-				<h5>{{i.name}}</h5>
-				<div class="col-md-4 agileinfo_single_left">
-					<img src="{{i.image.url}}" alt=" " class="img-responsive" />
-				</div>
-				<div class="col-md-8 agileinfo_single_right">
-					<div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked>
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-					</div>
-					<div class="w3agile_description">
-						<h4>Description :</h4>
-						<p>{{i.description}}</p>
-					</div>
-					<div class="snipcart-item block">
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4>${{ i.pric}}<span>$25.00</span></h4>
+.preview-pic {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.preview-thumbnail.nav-tabs {
+  border: none;
+  margin-top: 15px; }
+  .preview-thumbnail.nav-tabs li {
+    width: 18%;
+    margin-right: 2.5%; }
+    .preview-thumbnail.nav-tabs li img {
+      max-width: 100%;
+      display: block; }
+    .preview-thumbnail.nav-tabs li a {
+      padding: 0;
+      margin: 0; }
+    .preview-thumbnail.nav-tabs li:last-of-type {
+      margin-right: 0; }
+
+.tab-content {
+  overflow: hidden; }
+  .tab-content img {
+    width: 100%;
+    -webkit-animation-name: opacity;
+            animation-name: opacity;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s; }
+
+.card {
+  margin-top: 50px;
+  background: #eee;
+  padding: 3em;
+  line-height: 1.5em; }
+
+@media screen and (min-width: 997px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; } }
+
+.details {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.colors {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.product-title, .price, .sizes, .colors {
+  text-transform: UPPERCASE;
+  font-weight: bold; }
+
+.checked, .price span {
+  color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+  margin-bottom: 15px; }
+
+.product-title {
+  margin-top: 0; }
+
+.size {
+  margin-right: 10px; }
+  .size:first-of-type {
+    margin-left: 40px; }
+
+.color {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px; }
+  .color:first-of-type {
+    margin-left: 20px; }
+
+.add-to-cart, .like {
+  background: #ff9f1a;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover, .like:hover {
+    background: #b36800;
+    color: #fff; }
+
+.not-available {
+  text-align: center;
+  line-height: 2em; }
+  .not-available:before {
+    font-family: fontawesome;
+    content: "\f00d";
+    color: #fff; }
+
+.orange {
+  background: #ff9f1a; }
+
+.green {
+  background: #85ad00; }
+
+.blue {
+  background: #0076ad; }
+
+{#.tooltip-inner {#}
+{#  padding: 1.3em; }#}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+/*# sourceMappingURL=style.css.map */
+      </style>
+
+  </head>
+
+  <body>
+    {% for i in sale %}
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="{{ i.image.url }}" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
-						<div class="snipcart-details agileinfo_single_right_details">
-							<form action="#" method="post">
-								<fieldset>
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" />
-									<input type="hidden" name="business" value=" " />
-									<input type="hidden" name="item_name" value="pulao basmati rice" />
-									<input type="hidden" name="amount" value="21.00" />
-									<input type="hidden" name="discount_amount" value="1.00" />
-									<input type="hidden" name="currency_code" value="USD" />
-									<input type="hidden" name="return" value=" " />
-									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
-								</fieldset>
-							</form>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ i.image.url }}" /></a></li>
+						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						</ul>
+
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title">{{ i.name }}</h3>
+						<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+						</div>
+						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+						<h4 class="price">current price: <span>${{ i.pric }} </span></h4>
+						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+						<h5 class="sizes">sizes:
+							<span class="size" data-toggle="tooltip" title="small">s</span>
+							<span class="size" data-toggle="tooltip" title="medium">m</span>
+							<span class="size" data-toggle="tooltip" title="large">l</span>
+							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+						</h5>
+						<h5 class="colors">colors:
+							<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+							<span class="color green"></span>
+							<span class="color blue"></span>
+						</h5>
+						<div class="action">
+							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
 			</div>
 		</div>
-{% endfor%}
-
-		<div class="clearfix"></div>
 	</div>
-<!-- //banner -->
-<!-- brands -->
-	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
-		<div class="container">
-			<h3>Popular Brands</h3>
-				<div class="w3ls_w3l_banner_nav_right_grid1">
-					<h6>{{ producteCat.name }}</h6>
 
-                {% for j in dayproducte %}
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="{{ j.image.url }}" alt=" " class="img-responsive" /></a>
-											<p>chings noodles (75 gm)</p>
-											<h4>$5.00 <span>$8.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="chings noodles" />
-													<input type="hidden" name="amount" value="5.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-                {% endfor %}
 
-					<div class="clearfix"> </div>
-				</div>
-				<div class="w3ls_w3l_banner_nav_right_grid1">
-					<h6>vegetables & fruits</h6>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/9.png" alt=" " class="img-responsive" /></a>
-											<p>fresh spinach (palak)</p>
-											<h4>$2.00 <span>$3.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="fresh spinach" />
-													<input type="hidden" name="amount" value="2.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/10.png" alt=" " class="img-responsive" /></a>
-											<p>fresh mango dasheri (1 kg)</p>
-											<h4>$5.00 <span>$8.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="fresh mango dasheri" />
-													<input type="hidden" name="amount" value="5.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/11.png" alt=" " class="img-responsive" /></a>
-											<p>fresh apple red (1 kg)</p>
-											<h4>$6.00 <span>$8.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="fresh apple red" />
-													<input type="hidden" name="amount" value="6.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/12.png" alt=" " class="img-responsive" /></a>
-											<p>fresh broccoli (500 gm)</p>
-											<h4>$4.00 <span>$6.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="fresh broccoli" />
-													<input type="hidden" name="amount" value="4.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="w3ls_w3l_banner_nav_right_grid1">
-					<h6>beverages</h6>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/13.png" alt=" " class="img-responsive" /></a>
-											<p>mixed fruit juice (1 ltr)</p>
-											<h4>$3.00 <span>$4.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="mixed fruit juice" />
-													<input type="hidden" name="amount" value="3.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/14.png" alt=" " class="img-responsive" /></a>
-											<p>prune juice - sunsweet (1 ltr)</p>
-											<h4>$4.00 <span>$5.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="prune juice - sunsweet" />
-													<input type="hidden" name="amount" value="4.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/15.png" alt=" " class="img-responsive" /></a>
-											<p>coco cola zero can (330 ml)</p>
-											<h4>$3.00 <span>$5.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="coco cola zero can" />
-													<input type="hidden" name="amount" value="3.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.html"><img src="images/16.png" alt=" " class="img-responsive" /></a>
-											<p>sprite bottle (2 ltr)</p>
-											<h4>$3.00 <span>$4.00</span></h4>
-										</div>
-										<div class="snipcart-details">
-											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="sprite bottle" />
-													<input type="hidden" name="amount" value="3.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-		</div>
+        <div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1" id="logout">
+        <div class="page-header">
+            <h3 class="reviews">Leave your comment</h3>
+
+        </div>
+        <div class="comment-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="comments-logout">
+                    <ul class="media-list">
+                        {% for r in comment %}
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews">{{ r.user.username }} </h4>
+                              <ul class="media-date text-uppercase reviews list-inline">
+                               {{ r.create_at }}
+                              </ul>
+
+                              <p class="media-comment">
+                              {{ r.comment }}
+                              </p>
+                              <span>{{ r.comment }}</span>
+                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2 comments</a>
+                          </div>
+                        </div>
+                        <div class="collapse" id="replyOne">
+                            <ul class="media-list">
+                                <li class="media media-replied">
+                                    <a class="pull-left" href="#">
+                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                      <div class="well well-lg">
+                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> The Hipster</h4>
+                                          <ul class="media-date text-uppercase reviews list-inline">
+                                            <li class="dd">22</li>
+                                            <li class="mm">09</li>
+                                            <li class="aaaa">2014</li>
+                                          </ul>
+                                          <p class="media-comment">
+                                            Nice job Maria.
+                                          </p>
+                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                                      </div>
+                                    </div>
+                                </li>
+                                <li class="media media-replied" id="replied">
+                                    <a class="pull-left" href="#">
+                                      <img class="media-object img-circle" src="https://pbs.twimg.com/profile_images/442656111636668417/Q_9oP8iZ.jpeg" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                      <div class="well well-lg">
+                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Mary</h4></h4>
+                                          <ul class="media-date text-uppercase reviews list-inline">
+                                            <li class="dd">22</li>
+                                            <li class="mm">09</li>
+                                            <li class="aaaa">2014</li>
+                                          </ul>
+                                          <p class="media-comment">
+                                            Thank you Guys!
+                                          </p>
+                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                                      </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                      </li>
+                            {% endfor %}
+
+                      <li class="media">
+                        <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
+                        </a>
+                        <div class="media-body">
+                          <div class="well well-lg">
+                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
+                              <ul class="media-date text-uppercase reviews list-inline">
+                                <li class="dd">22</li>
+                                <li class="mm">09</li>
+                                <li class="aaaa">2014</li>
+                              </ul>
+                              <p class="media-comment">
+                                Yehhhh... Thanks for sharing.
+                              </p>
+                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
+                          </div>
+                        </div>
+                        <div class="collapse" id="replyTwo">
+                            <ul class="media-list">
+                                <li class="media media-replied">
+                                    <a class="pull-left" href="#">
+                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jackiesaik/128.jpg" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                      <div class="well well-lg">
+                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Lizz</h4>
+                                          <ul class="media-date text-uppercase reviews list-inline">
+                                            <li class="dd">22</li>
+                                            <li class="mm">09</li>
+                                            <li class="aaaa">2014</li>
+                                          </ul>
+                                          <p class="media-comment">
+                                            Classy!
+                                          </p>
+                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                                      </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                      </li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="add-comment">
+                    <form action="{% url 'addComment'  i.id %}" method="POST" class="form-horizontal" id="commentForm" role="form">
+                              {% csrf_token %}
+                            <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label"> Status</label>
+                              <div class="col-4 col-md-4">
+                                <select id="product_categorie" name="status" class="form-control">
+
+                                 <option value="1">Evet</option>
+                                    <option value="0">Hayir</option>
+
+                                           </select>
+                                           </div>
+                                      </div>
+                            <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Subject</label>
+                            <div class="col-sm-10">
+                              <input class="form-control" name="subject" id="addComment" rows="5">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Comment</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" name="comment" id="addComment" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">YOUR RATING</label>
+                            <div class="col-sm-10">
+                             <div class="rating">
+                                  <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
+                                 <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
+                                    <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
+                                     <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
+                                    <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
+                                  </div>
+                            </div>
+                        </div>
+                           {% if user.id is not None %}
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                            </div>
+                        </div>
+                        {% else %}
+                        <p> To make a comment you need to LINGIN</p>
+                        {% endif %}
+                    </form>
+                </div>
+
+            </div>
+        </div>
 	</div>
-<!-- //brands -->
-<!-- newsletter -->
-	<div class="newsletter">
-		<div class="container">
-			<div class="w3agile_newsletter_left">
-				<h3>sign up for our newsletter</h3>
-			</div>
-			<div class="w3agile_newsletter_right">
-				<form action="#" method="post">
-					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<input type="submit" value="subscribe now">
-				</form>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //newsletter -->
+  </div>
+
+</div>
+{#        {% endfor %}#}
+  {% endfor %}
+  </body>
+</html>
+
+
+
+
+
+
+{#{% for i in sale%}#}
+{##}
+{#		<div class="w3l_banner_nav_right">#}
+{##}
+{#			<div class="agileinfo_single">#}
+{#				<h5>{{i.name}}</h5>#}
+{#				<div class="col-md-4 agileinfo_single_left">#}
+{#					<img src="{{i.image.url}}" alt=" " class="img-responsive" />#}
+{#				</div>#}
+{#				<div class="col-md-8 agileinfo_single_right">#}
+{#					<div class="rating1">#}
+{#						<span class="starRating">#}
+{#							<input id="rating5" type="radio" name="rating" value="5">#}
+{#							<label for="rating5">5</label>#}
+{#							<input id="rating4" type="radio" name="rating" value="4">#}
+{#							<label for="rating4">4</label>#}
+{#							<input id="rating3" type="radio" name="rating" value="3" checked>#}
+{#							<label for="rating3">3</label>#}
+{#							<input id="rating2" type="radio" name="rating" value="2">#}
+{#							<label for="rating2">2</label>#}
+{#							<input id="rating1" type="radio" name="rating" value="1">#}
+{#							<label for="rating1">1</label>#}
+{#						</span>#}
+{#					</div>#}
+{#					<div class="w3agile_description">#}
+{#						<h4>Description :</h4>#}
+{#						<p>{{i.description}}</p>#}
+{#					</div>#}
+{#					<div class="snipcart-item block">#}
+{#						<div class="snipcart-thumb agileinfo_single_right_snipcart">#}
+{#							<h4>${{ i.pric}}<span>$25.00</span></h4>#}
+{#						</div>#}
+{#						<div class="snipcart-details agileinfo_single_right_details">#}
+{#							<form action="#" method="post">#}
+{#								<fieldset>#}
+{#									<input type="hidden" name="cmd" value="_cart" />#}
+{#									<input type="hidden" name="add" value="1" />#}
+{#									<input type="hidden" name="business" value=" " />#}
+{#									<input type="hidden" name="item_name" value="pulao basmati rice" />#}
+{#									<input type="hidden" name="amount" value="21.00" />#}
+{#									<input type="hidden" name="discount_amount" value="1.00" />#}
+{#									<input type="hidden" name="currency_code" value="USD" />#}
+{#									<input type="hidden" name="return" value=" " />#}
+{#									<input type="hidden" name="cancel_return" value=" " />#}
+{#									<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#								</fieldset>#}
+{#							</form>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="clearfix"> </div>#}
+{#			</div>#}
+{#		</div>#}
+{#{% endfor%}#}
+{##}
+{#		<div class="clearfix"></div>#}
+{#	</div>#}
+{#<!-- //banner -->#}
+{#<!-- brands -->#}
+{#	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">#}
+{#		<div class="container">#}
+{#			<h3>Popular Brands</h3>#}
+{#				<div class="w3ls_w3l_banner_nav_right_grid1">#}
+{#					<h6>{{ producteCat.name }}</h6>#}
+{##}
+{#                {% for j in dayproducte %}#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="{{ j.image.url }}" alt=" " class="img-responsive" /></a>#}
+{#											<p>chings noodles (75 gm)</p>#}
+{#											<h4>$5.00 <span>$8.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="chings noodles" />#}
+{#													<input type="hidden" name="amount" value="5.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#                {% endfor %}#}
+{##}
+{#					<div class="clearfix"> </div>#}
+{#				</div>#}
+{#				<div class="w3ls_w3l_banner_nav_right_grid1">#}
+{#					<h6>vegetables & fruits</h6>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/9.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>fresh spinach (palak)</p>#}
+{#											<h4>$2.00 <span>$3.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="fresh spinach" />#}
+{#													<input type="hidden" name="amount" value="2.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/10.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>fresh mango dasheri (1 kg)</p>#}
+{#											<h4>$5.00 <span>$8.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="fresh mango dasheri" />#}
+{#													<input type="hidden" name="amount" value="5.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/11.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>fresh apple red (1 kg)</p>#}
+{#											<h4>$6.00 <span>$8.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="fresh apple red" />#}
+{#													<input type="hidden" name="amount" value="6.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/12.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>fresh broccoli (500 gm)</p>#}
+{#											<h4>$4.00 <span>$6.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="fresh broccoli" />#}
+{#													<input type="hidden" name="amount" value="4.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="clearfix"> </div>#}
+{#				</div>#}
+{#				<div class="w3ls_w3l_banner_nav_right_grid1">#}
+{#					<h6>beverages</h6>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/13.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>mixed fruit juice (1 ltr)</p>#}
+{#											<h4>$3.00 <span>$4.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="mixed fruit juice" />#}
+{#													<input type="hidden" name="amount" value="3.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/14.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>prune juice - sunsweet (1 ltr)</p>#}
+{#											<h4>$4.00 <span>$5.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="prune juice - sunsweet" />#}
+{#													<input type="hidden" name="amount" value="4.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/15.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>coco cola zero can (330 ml)</p>#}
+{#											<h4>$3.00 <span>$5.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="coco cola zero can" />#}
+{#													<input type="hidden" name="amount" value="3.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="col-md-3 w3ls_w3l_banner_left">#}
+{#						<div class="hover14 column">#}
+{#						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">#}
+{#							<div class="agile_top_brand_left_grid_pos">#}
+{#								<img src="images/offer.png" alt=" " class="img-responsive" />#}
+{#							</div>#}
+{#							<div class="agile_top_brand_left_grid1">#}
+{#								<figure>#}
+{#									<div class="snipcart-item block">#}
+{#										<div class="snipcart-thumb">#}
+{#											<a href="single.html"><img src="images/16.png" alt=" " class="img-responsive" /></a>#}
+{#											<p>sprite bottle (2 ltr)</p>#}
+{#											<h4>$3.00 <span>$4.00</span></h4>#}
+{#										</div>#}
+{#										<div class="snipcart-details">#}
+{#											<form action="#" method="post">#}
+{#												<fieldset>#}
+{#													<input type="hidden" name="cmd" value="_cart" />#}
+{#													<input type="hidden" name="add" value="1" />#}
+{#													<input type="hidden" name="business" value=" " />#}
+{#													<input type="hidden" name="item_name" value="sprite bottle" />#}
+{#													<input type="hidden" name="amount" value="3.00" />#}
+{#													<input type="hidden" name="discount_amount" value="1.00" />#}
+{#													<input type="hidden" name="currency_code" value="USD" />#}
+{#													<input type="hidden" name="return" value=" " />#}
+{#													<input type="hidden" name="cancel_return" value=" " />#}
+{#													<input type="submit" name="submit" value="Add to cart" class="button" />#}
+{#												</fieldset>#}
+{#											</form>#}
+{#										</div>#}
+{#									</div>#}
+{#								</figure>#}
+{#							</div>#}
+{#						</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="clearfix"> </div>#}
+{#				</div>#}
+{#		</div>#}
+{#	</div>#}
+{#<!-- //brands -->#}
+{#<!-- newsletter -->#}
+{#	<div class="newsletter">#}
+{#		<div class="container">#}
+{#			<div class="w3agile_newsletter_left">#}
+{#				<h3>sign up for our newsletter</h3>#}
+{#			</div>#}
+{#			<div class="w3agile_newsletter_right">#}
+{#				<form action="#" method="post">#}
+{#					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">#}
+{#					<input type="submit" value="subscribe now">#}
+{#				</form>#}
+{#			</div>#}
+{#			<div class="clearfix"> </div>#}
+{#		</div>#}
+{#	</div>#}
+{#<!-- //newsletter -->#}
 
 
 {% endblock%}

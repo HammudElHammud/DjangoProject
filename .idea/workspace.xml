@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab907ab7-58f9-4290-86e9-0a7a6eb087b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forSale/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forSale/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forSale/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forSale/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/master.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/producte.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/producte.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stin/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +48,7 @@
         <item name="SQLite - db.sqlite3" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="auth_user_user_permissions: table" type="3d80ac25:SqliteImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="SQLite - db.sqlite3" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="forSale_forslar: table" type="3d80ac25:SqliteImplModel$Table" />
+        <item name="auth_user: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -156,6 +155,7 @@
       <workItem from="1588676447628" duration="8722000" />
       <workItem from="1588935191471" duration="46523000" />
       <workItem from="1589311043321" duration="52136000" />
+      <workItem from="1589581161845" duration="25373000" />
     </task>
     <task id="LOCAL-00001" summary="slider and page navigations">
       <created>1587063226297</created>
@@ -238,6 +238,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="user profile change password update" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="275" y="23" key="#Inspections" timestamp="1589626087999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="23" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1589626087999" />
     <state x="275" y="23" key="#Servers" timestamp="1589142119393">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -254,10 +258,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588964325537" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589404391505">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589452905353">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589404391505" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589452905353" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1589411646045">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -286,13 +290,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="10" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587058437861" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589404405232">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589452914631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589404405232" />
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1589311043630">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589452914631" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1589581163944">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589311043630" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589581163944" />
   </component>
 </project>

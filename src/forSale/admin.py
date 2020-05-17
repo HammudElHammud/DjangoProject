@@ -1,7 +1,7 @@
 from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
 
-from .models import Forslar, Category,Images
+from .models import Forslar, Category,Images,Comment
 class ProductImagesInline(admin.StackedInline):
     model = Images
     extra = 4
@@ -54,9 +54,15 @@ class CategoryAdmin2(DraggableMPTTAdmin):
         return instance.products_cumulative_count
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['subject','comment','product' ,'user','status']
+    list_filter = ['status']
+
+
 admin.site.register (Category,CategoryAdmin2)
 admin.site.register (Forslar,FordslarAdmin)
 admin.site.register (Images,ImagesAdmin)
+admin.site.register (Comment,CommentAdmin)
 
 
 # Register your models here.

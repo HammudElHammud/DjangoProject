@@ -1,7 +1,7 @@
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Main,UserProfile
-from forSale.models import Forslar,Category
+from forSale.models import Forslar,Category,Comment
 from category.models import category
 from contentus.models import Contentus
 from django.contrib.auth import authenticate,login, logout
@@ -31,10 +31,41 @@ def aboutus(request):
 
 def producte(request,pk):
     pageName = 'producte Page'
+    cate = Category.objects.all()
+    comment = Comment.objects.filter(product__id= pk, status = 'False')
+    userInfo = request.user
     sale =  Forslar.objects.filter(pk=pk)
     dayproducte = Forslar.objects.all()[:3]
     lastproducte = Forslar.objects.all()[:2]
-    return render(request,'front/producte.html',{'sale':sale,'dayproducte':dayproducte,'lastproduct':lastproducte,'title':pageName})
+    print(comment,'dffsffds')
+
+    return render(request,'front/producte.html',{'userInfo' :userInfo,'sale':sale,'cate': cate,'dayproducte':dayproducte,'lastproduct':lastproducte,'title':pageName,'comment':comment})
+
+def  addComment(request, pk):
+    pageName = ' producte Page'
+    cate = Category.objects.all()
+    userInfo = request.user
+    sale = Forslar.objects.filter(pk=pk)
+
+    if request.method == 'POST':
+        data = Comment()
+        data.user_id  = userInfo.id
+        status = request.POST.get('status')
+        if status == 0:
+            status = 'True'
+        else:
+            status = 'False'
+        data.status = status
+        data.product = sale[0]
+        data.subject = request.POST.get('subject')
+        data.comment = request.POST.get('comment')
+        data.rate = request.POST.get('rating')
+        data.save()
+        return redirect('/home/producte/'+pk +'/')
+        return render(request, 'front/producte.html',{'userInfo': userInfo, 'sale': sale, 'cate': cate, 'title': pageName})
+
+    return render(request, 'front/producte.html',{'userInfo': userInfo, 'sale': sale, 'cate': cate, 'title': pageName})
+
 
 def panel(request):
 
@@ -56,12 +87,11 @@ def login(request):
             user = authenticate(username = uuser,password = ppassword)
 
             if user is not None:
-
                 auth.login(request,user)
                 return render(request,'front/login.html')
 
 
-    return render(request,'front/home.html',{'title':pageName,'cate':cate})
+    return redirect('/home/')
 
 def logout(request):
     auth.logout(request)

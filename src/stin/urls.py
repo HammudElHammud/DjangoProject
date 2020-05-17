@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^userChangePassword/$',views.userChangePassword,name='userChangePassword'),
     url(r'^panel/listproducte/$',views.listProducte,name='listproducte'),
     url(r'^home/producte/(?P<pk>\d+)/$', views.producte, name='producte'),
+    url(r'^home/producte/addComment/(?P<pk>\d+)/$', views.addComment, name='addComment'),
     url(r'^home/producteCategory/(?P<pk>\d+)/$', views.producteCategory, name='producteCategory'),
     url(r'^login/$', views.login, name='login'),
     url(r'^logout/$', views.logout, name='logout'),
