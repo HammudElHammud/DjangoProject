@@ -277,10 +277,23 @@ img {
 							<span class="color green"></span>
 							<span class="color blue"></span>
 						</h5>
-						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
-						</div>
+						<div class="product-btns">
+                    <form action="{% url 'AddToCart'  i.id %}" method="POST" class="form-horizontal" id="commentForm" role="form">
+                                {% csrf_token %}
+                                <div class="qty-input">
+                                    <span class="text-uppercase"> Adet :</span>
+                                    <input name="quantity" class="input" type="number" width="50px" min="0" max="{{ i.amount }}" value="1">
+
+
+                                </div>
+                                <div>
+                                    <br>
+
+                                </div>
+							<button class="add-to-cart btn btn-default" type="submit">add to cart</button>
+						</form>
+                        </div>
+
 					</div>
 				</div>
 			</div>

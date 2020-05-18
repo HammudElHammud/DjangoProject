@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Main,UserProfile
@@ -7,9 +8,8 @@ from contentus.models import Contentus
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import auth
 from django.contrib.auth.models import User
-
-
-
+from order.models import ShopCart
+from django.http import HttpResponse
 
 
 
@@ -65,6 +65,79 @@ def  addComment(request, pk):
         return render(request, 'front/producte.html',{'userInfo': userInfo, 'sale': sale, 'cate': cate, 'title': pageName})
 
     return render(request, 'front/producte.html',{'userInfo': userInfo, 'sale': sale, 'cate': cate, 'title': pageName})
+
+@login_required(login_url = '/login')
+def AddToCart(request,pk):
+
+    sale = Forslar.objects.filter(pk=pk)
+    checkProduct= ShopCart.objects.filter(pk=pk)
+    if checkProduct:
+        control = 1
+    else:
+      control = 0
+
+    if request.method == 'POST':
+
+        # print("after")
+        # if control == 1 :
+        #     data = ShopCart.objects.get(product_id = pk)
+        #     data.quantity += 1
+        #     data.save()
+        # else:
+        currentUser = request.user
+        data = ShopCart()
+        data.user_id = currentUser.id
+        data.product = sale[0]
+        # a = request.POST.get('quantity')
+        # print(a)
+        # if control >= 1:
+        #     data.quantity += 1
+        # else:
+        #     data.quantity = request.POST.get('quantity')
+        data.quantity = request.POST.get('quantity')
+        data.save()
+        return redirect('/home/producte/' + pk + '/')
+
+    else :
+        if control == 1:
+            data = ShopCart.objects.get(product_id=pk)
+            data.quantity += 1
+            data.save()
+        else:
+            currentUser = request.user
+            data = ShopCart()
+            data.user_id = currentUser.id
+            data.product = sale[0]
+            data.quantity = 1
+            data.save()
+            return redirect('/home/producte/' + pk + '/')
+
+
+
+    return redirect('/home/producte/' + pk + '/')
+
+
+def showCart(request):
+    pageName = ' Show Cart'
+    cate = Category.objects.all()
+    currentUser = request.user
+    userCart = ShopCart.objects.filter(user_id = currentUser.id)
+    total = 0
+    for r in userCart:
+        total += r.product.pric *r.quantity
+
+    return render(request,'front/ShowCart.html',{ 'userCart':userCart ,'title': pageName,'cate':cate ,'total':total})
+
+
+
+
+def deleteProdcutCart(request,pk):
+    b = ShopCart.objects.get(pk=pk)
+    b.delete()
+    return redirect('/showCart')
+
+
+
 
 
 def panel(request):
