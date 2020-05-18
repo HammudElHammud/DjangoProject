@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab907ab7-58f9-4290-86e9-0a7a6eb087b8" name="Default Changelist" comment="user make comments to product">
-      <change afterPath="$PROJECT_DIR$/src/order/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/order/views.py" afterDir="false" />
+    <list default="true" id="ab907ab7-58f9-4290-86e9-0a7a6eb087b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/templates/front/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/master.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/templates/front/producte.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/producte.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stin/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stin/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stin/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,13 +41,6 @@
         <item name="SQLite - db.sqlite3" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="SQLite - db.sqlite3" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="order_shopcart: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -141,16 +128,6 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@1f201472" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@1678bb3" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="com.intellij.database.console.session.MessageBusSession@260b06fc" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
@@ -177,7 +154,7 @@
       <workItem from="1588676447628" duration="8722000" />
       <workItem from="1588935191471" duration="46523000" />
       <workItem from="1589311043321" duration="52136000" />
-      <workItem from="1589581161845" duration="46449000" />
+      <workItem from="1589581161845" duration="67185000" />
     </task>
     <task id="LOCAL-00001" summary="slider and page navigations">
       <created>1587063226297</created>
@@ -235,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589708077813</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="start to  make shop cart">
+      <created>1589795165680</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589795165680</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +249,8 @@
     <MESSAGE value="user profile change password" />
     <MESSAGE value="user profile change password update" />
     <MESSAGE value="user make comments to product" />
-    <option name="LAST_COMMIT_MESSAGE" value="user make comments to product" />
+    <MESSAGE value="start to  make shop cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="start to  make shop cart" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="23" key="#Inspections" timestamp="1589626087999">
@@ -288,42 +273,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588964325537" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589708101528">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589795164566">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589708101528" />
-    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1589752741217">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589795164566" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1589803637800">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1366.728@0.0.1366.728" timestamp="1589752741217" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1366.728@0.0.1366.728" timestamp="1589803637800" />
     <state x="465" y="109" key="FileChooserDialogImpl" timestamp="1588692518484">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="465" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588692518484" />
-    <state width="905" height="203" key="GridCell.Tab.0.bottom" timestamp="1589753167923">
+    <state width="905" height="203" key="GridCell.Tab.0.bottom" timestamp="1589828403799">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589753167923" />
-    <state width="905" height="203" key="GridCell.Tab.0.center" timestamp="1589753167922">
+    <state width="905" height="203" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
+    <state width="905" height="203" key="GridCell.Tab.0.center" timestamp="1589828403799">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589753167922" />
-    <state width="905" height="203" key="GridCell.Tab.0.left" timestamp="1589753167922">
+    <state width="905" height="203" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
+    <state width="905" height="203" key="GridCell.Tab.0.left" timestamp="1589828403799">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589753167922" />
-    <state width="905" height="203" key="GridCell.Tab.0.right" timestamp="1589753167922">
+    <state width="905" height="203" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
+    <state width="905" height="203" key="GridCell.Tab.0.right" timestamp="1589828403799">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589753167922" />
+    <state width="905" height="203" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
     <state x="186" y="10" key="SettingsEditor" timestamp="1587058437861">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="10" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587058437861" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589795085091">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589795172001">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589795085091" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589795172001" />
     <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1589581163944">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

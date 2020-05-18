@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import url,include
 from  django.conf import settings
 from django.conf.urls.static import static
-from main import models,views
+from main import models, views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^userAddProducte/$',views.userAddProducte,name='userAddProducte'),
     url(r'^userUpdate/$',views.userUpdate,name='userUpdate'),
     url(r'^showCart/$',views.showCart,name='showCart'),
+    url(r'^orderProduct/$',views.orderProduct,name='orderProduct'),
     url(r'^deleteProdcutCart/(?P<pk>\d+)/$', views.deleteProdcutCart, name='deleteProdcutCart'),
     url(r'^userChangePassword/$',views.userChangePassword,name='userChangePassword'),
     url(r'^panel/listproducte/$',views.listProducte,name='listproducte'),

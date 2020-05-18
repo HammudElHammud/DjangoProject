@@ -8,7 +8,9 @@ from contentus.models import Contentus
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import auth
 from django.contrib.auth.models import User
-from order.models import ShopCart
+from order.models import ShopCart,Order,OrderProduct
+import uuid
+
 from django.http import HttpResponse
 
 
@@ -135,6 +137,52 @@ def deleteProdcutCart(request,pk):
     b = ShopCart.objects.get(pk=pk)
     b.delete()
     return redirect('/showCart')
+
+
+
+def  orderProduct(request):
+    cate = category.objects.all()
+    current_user = request.user
+    profile = UserProfile.objects.get(user_id=current_user.id)
+
+    shopCart  = ShopCart.objects.filter(user_id = current_user.id)
+    total = 0
+    for r in shopCart:
+        total += r.product.pric * r.quantity
+
+    if request.method == 'POST':
+        data = Order()
+        data.first_name = request.POST.get('name')
+        data.last_name = request.POST.get('last_name')
+        last_name = request.POST.get('last_name')
+        data.city = request.POST.get('city')
+        data.country = request.POST.get('country')
+        data.phone = request.POST.get('phone')
+        data.address = request.POST.get('address')
+        data.user_id = current_user.id
+        data.total = total
+        data.ip = request.META.get('REMOTE_ADDR')
+        orderCode = uuid.uuid4().hex[:6].upper()
+        data.code = orderCode
+        data.save()
+        shopCart = ShopCart.objects.filter(user_id = current_user.id)
+        for rs in shopCart:
+            detial = OrderProduct()
+            detial.order_id  = data.id
+            detial.product_id = rs.product_id
+            detial.quantity = rs.quantity
+            print(rs.quantity)
+            detial.user_id = current_user.id
+            product = Forslar.objects.get(id = rs.product_id)
+            product.amount -= rs.quantity
+            product.save()
+            detial.price = rs.product.pric
+            detial.amount = rs.amount
+            detial.save()
+
+        ShopCart.objects.filter(user_id = current_user.id).delete()
+
+    return render(request, 'front/shopCartProduct.html',{'profile':profile})
 
 
 
