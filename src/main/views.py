@@ -184,6 +184,36 @@ def  orderProduct(request):
 
     return render(request, 'front/shopCartProduct.html',{'profile':profile})
 
+def userShowOrder(request):
+    cate = Category.objects.all()
+    current_user = request.user
+    userOrder = Order.objects.filter(user_id = current_user.id)
+    print(current_user.id)
+    return render(request,'front/userShowOrder.html',{'cate':cate,'userOrder':userOrder})
+
+def userShowProductDetial(request,pk):
+    cate = Category.objects.all()
+    current_user = request.user
+    order = Order.objects.filter(user_id=current_user.id,id =pk)
+    orderItems = OrderProduct.objects.filter(order_id = pk)
+    print(order)
+
+
+    return render(request,'front/userShowProductDetail.html',{'cate':cate,'order':order,'orderItems':orderItems})
+
+def userShowComments(request):
+    cate = Category.objects.all()
+    current_user = request.user
+    comments = Comment.objects.filter(user_id=current_user.id)
+
+    return render(request,'front/userShowComments.html',{'comments':comments})
+
+def deleteUserComments(request,pk):
+    b = Comment.objects.get(pk=pk)
+    b.delete()
+    return redirect('/userShowComments')
+
+
 
 
 
