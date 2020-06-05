@@ -3,14 +3,34 @@
   <component name="ChangeListManager">
     <list default="true" id="ab907ab7-58f9-4290-86e9-0a7a6eb087b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/forSale/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forSale/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/contantus.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/contantus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/templates/front/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/master.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/producte.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/producte.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/front/producteCategory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/producteCategory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stin/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/mail.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/mail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/short-codes.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/short-codes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/single.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/single.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -115,17 +135,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@56bb6eab" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@d3d115d" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@260b06fc" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@4854dd5c" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -151,7 +161,13 @@
       <workItem from="1588676447628" duration="8722000" />
       <workItem from="1588935191471" duration="46523000" />
       <workItem from="1589311043321" duration="52136000" />
-      <workItem from="1589581161845" duration="80117000" />
+      <workItem from="1589581161845" duration="86408000" />
+      <workItem from="1590303958471" duration="965000" />
+      <workItem from="1590843743163" duration="1066000" />
+      <workItem from="1590954249515" duration="66633000" />
+      <workItem from="1591269878732" duration="157000" />
+      <workItem from="1591292364741" duration="1317000" />
+      <workItem from="1591385158854" duration="316000" />
     </task>
     <task id="LOCAL-00001" summary="slider and page navigations">
       <created>1587063226297</created>
@@ -223,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589834431878</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="show comments and order information in profile">
+      <created>1589856464822</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589856464822</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +278,8 @@
     <MESSAGE value="user make comments to product" />
     <MESSAGE value="start to  make shop cart" />
     <MESSAGE value=" finish checkout" />
-    <option name="LAST_COMMIT_MESSAGE" value=" finish checkout" />
+    <MESSAGE value="show comments and order information in profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="show comments and order information in profile" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="23" key="#Inspections" timestamp="1589626087999">
@@ -266,10 +290,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="23" key="#Servers/0.0.1366.728@0.0.1366.728" timestamp="1589142119393" />
-    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589144270852">
+    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591095690842">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589144270852" />
+    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1591095690842" />
     <state x="455" y="168" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583407486092">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -278,45 +302,60 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588964325537" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1589834430491">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590013925719">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589834430491" />
-    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1589803637800">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1590013925719" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1591095952778">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1366.728@0.0.1366.728" timestamp="1589803637800" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1366.728@0.0.1366.728" timestamp="1591095952778" />
     <state x="465" y="109" key="FileChooserDialogImpl" timestamp="1588692518484">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="465" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588692518484" />
-    <state width="905" height="203" key="GridCell.Tab.0.bottom" timestamp="1589828403799">
+    <state width="905" height="102" key="GridCell.Tab.0.bottom" timestamp="1591113412963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
-    <state width="905" height="203" key="GridCell.Tab.0.center" timestamp="1589828403799">
+    <state width="905" height="102" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591113412963" />
+    <state width="905" height="102" key="GridCell.Tab.0.center" timestamp="1591113412963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
-    <state width="905" height="203" key="GridCell.Tab.0.left" timestamp="1589828403799">
+    <state width="905" height="102" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591113412963" />
+    <state width="905" height="102" key="GridCell.Tab.0.left" timestamp="1591113412963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
-    <state width="905" height="203" key="GridCell.Tab.0.right" timestamp="1589828403799">
+    <state width="905" height="102" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591113412963" />
+    <state width="905" height="102" key="GridCell.Tab.0.right" timestamp="1591113412963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="905" height="203" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589828403799" />
+    <state width="905" height="102" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591113412963" />
     <state x="186" y="10" key="SettingsEditor" timestamp="1587058437861">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="10" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587058437861" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589834444145">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589856482550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589834444145" />
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1589581163944">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589856482550" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1591385161802">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589581163944" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591385161802" />
+    <state x="339" y="17" width="672" height="676" key="search.everywhere.popup" timestamp="1591055810290">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="17" width="672" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591055810290" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/templates/front/producteCategory.html</url>
+          <line>36</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

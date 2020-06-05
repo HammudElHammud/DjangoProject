@@ -36,21 +36,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 </script>
-<!-- start-smoth-scrolling -->
-</head>
-
-{% endblock%}
-
-{% block mainblock%}
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 {#<!DOCTYPE html>#}
 {#<html lang="en">#}
-  <head>
+
 
 {#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
 {##}
@@ -225,9 +218,25 @@ img {
 /*# sourceMappingURL=style.css.map */
       </style>
 
-  </head>
 
-  <body>
+<!-- start-smoth-scrolling -->
+</head>
+
+{% endblock%}
+
+{% block mainblock%}
+
+
+
+  <div class="products-breadcrumb">
+		<div class="container"  style="height: 20px ">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/home">Home</a><span>|</span></li>
+				<li>Product</li>
+			</ul>
+		</div>
+	</div>
+
     {% for i in sale %}
 	<div class="container">
 		<div class="card">
@@ -236,18 +245,18 @@ img {
 					<div class="preview col-md-6">
 
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="{{ i.image.url }}" /></div>
-						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+                            <div class="tab-pane active" id="id{{i.image.id}}"><img src="{{ i.image.url }}" /></div>
+
+                            {% for img in i.images %}
+                            <div class="tab-pane" id="{{img.id}}"><img src="{{ img.image.url }}" /></div>
+                            {% endfor %}
 						</div>
 						<ul class="preview-thumbnail nav nav-tabs">
-						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ i.image.url }}" /></a></li>
-						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+                            <li class="active"><a data-target="#id{{ i.image.id }}" data-toggle="tab"><img src="{{ i.image.url }}" /></a></li>
+
+                            {% for img in i.images %}
+                                <li class="{% if forloop.counter0 == 0 %}active{% endif %}"><a data-target="#{{ img.id }}" data-toggle="tab"><img src="{{ img.image.url }}" /></a></li>
+                            {% endfor %}
 						</ul>
 
 					</div>
@@ -263,7 +272,7 @@ img {
 							</div>
 							<span class="review-no">41 reviews</span>
 						</div>
-						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+						<p class="product-description">{{ i.description |safe }}</p>
 						<h4 class="price">current price: <span>${{ i.pric }} </span></h4>
 						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 						<h5 class="sizes">sizes:
@@ -491,8 +500,7 @@ img {
 </div>
 {#        {% endfor %}#}
   {% endfor %}
-  </body>
-</html>
+
 
 
 

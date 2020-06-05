@@ -42,6 +42,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% endblock%}
 
 {% block mainblock%}
+     <div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/home">Home</a><span>|</span></li>
+				<li>Content Us</li>
+			</ul>
+		</div>
+	</div>
 {% for i in set%}
 		<div class="mail">
 			<h3>Mail Us</h3>
@@ -49,15 +57,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-4 agileinfo_mail_grid_left">
 					<ul>
 						<li><i class="fa fa-home" aria-hidden="true"></i></li>
-						<li>address<span>868 1st Avenue NYC.</span></li>
+						<li>address<span>{{ i.address }}</span></li>
 					</ul>
 					<ul>
 						<li><i class="fa fa-envelope" aria-hidden="true"></i></li>
-						<li>email<span><a href="mailto:info@example.com">info@example.com</a></span></li>
+						<li>email<span><a href="mailto:info@example.com">{{ i.smtpemail }}</a></span></li>
 					</ul>
 					<ul>
 						<li><i class="fa fa-phone" aria-hidden="true"></i></li>
-						<li>call to us<span>(+123) 233 2362 826</span></li>
+						<li>call to us<span>{{ i.pageTe }}</span></li>
 					</ul>
 				</div>
 				<div class="col-md-6 agileinfo_mail_grid_right">

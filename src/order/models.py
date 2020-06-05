@@ -16,7 +16,7 @@ class ShopCart(models.Model):
 
     @property
     def amount(self):
-        return (self.quantity * self.product.pric)
+        return self.quantity * self.product.pric
 
     @property
     def price(self):

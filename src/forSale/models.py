@@ -39,6 +39,9 @@ class Category(MPTTModel):
             k = k.parent
         return  '>>'  .join(full_path[ :: -1])
 
+    def children(self):
+        return Category.objects.filter(parent=self).all().all()
+
     def image_tag(self):
         return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
     image_tag.short_description = 'Image'
@@ -84,6 +87,9 @@ class Forslar(models.Model):
         self.image.short_description = 'Image'
         return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
 
+    @property
+    def images(self):
+        return Images.objects.filter(product=self)
 
 class Images(models.Model):
     product = models.ForeignKey(Forslar,on_delete=models.CASCADE)
@@ -93,7 +99,7 @@ class Images(models.Model):
         return self.title
     def image_tag(self):
         return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
-    image_tag.short_description = 'Image'
+    image_tag.shovrt_description = 'Image'
 
 
 class Comment(models.Model):

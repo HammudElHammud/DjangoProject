@@ -8,341 +8,420 @@ author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-{% block head%}
+{% block head %}
 
-{% endblock%}
+{% endblock %}
 
-<body>
 <!-- header -->
-	<div class="agileits_header">
-		<div class="w3l_offers">
-			<a href="">Today's special Offers !</a>
-		</div>
-		<div class="w3l_search">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
-				<input type="submit" value=" ">
-			</form>
-		</div>
-		<a href="{% url 'orderProduct' %}"><div class="product_list_header">
-{#			<form action="#" method="post" class="last">#}
-{#                <fieldset>#}
-{#                    <input type="hidden" name="cmd" value="_cart" />#}
-{#                    <input type="hidden" name="display" value="1" />#}
-                    <a href="{% url 'orderProduct' %}"> <input type="submit" name="submit" value="View  your cart" class="button" /></a>
-{#                </fieldset>#}
-{#            </form>#}
-        </div></a>
-		<div class="w3l_header_right" >
-			<ul>
-				<li class="dropdown profile_details_drop">
-					<a href= " " class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
-					<div class="mega-dropdown-menu" style="width: 200px">
-                        <div class="header-btns-icon">
-                        </div>
-						<div class="w3ls_vegetables">
-							<ul class="dropdown-menu drp-mnu">
+<div class="agileits_header">
+    <div class="w3l_offers">
+        <a href="">Today's special Offers !</a>
+    </div>
+    <div class="w3l_search">
+        <form action="{% url 'searchProduct' %}" class="dropzone dropzone-custom needsclick add-professors"
+              ENCTYPE="multipart/form-data" method="POST" id="">
+            {% csrf_token %}
+            <input type="text" name="Product" id="productname" value="" onfocus="" placeholder="Search" required="">
+            <input type="submit" value=" ">
+            <div id="search_result" style="
+                position: absolute;
+                top: 45px;
+                left: 410px;
+                background-color: White;
+">
+            </div>
+            <script>
+                $("#productname").on("change paste keyup", function () {
+                    const search_result = $('#search_result');
+                    const q = $('#productname').val();
+                    if (q.length == 0) {
+                        search_result.empty();
+                        return;
+                    }
+                    $.get(`/searchProduct/auto?query=${q}`, function (data) {
+                        data = JSON.parse(data.toString());
+                        search_result.empty();
+                        for (var key in data) {
+                            search_result.append(
+                                `<a href="/home/producte/${key}/" style="width: 307px;padding: 5px; display: block; margin-bottom: 2px;">${data[key]}</a>`
+                            )
+                        }
+                    });
+                });
+            </script>
+        </form>
+    </div>
+    <a href="{% url 'orderProduct' %}">
+        <div class="product_list_header">
+            {#			<form action="#" method="post" class="last">#}
+            {#                <fieldset>#}
+            {#                    <input type="hidden" name="cmd" value="_cart" />#}
+            {#                    <input type="hidden" name="display" value="1" />#}
+            <a href="{% url 'showCart' %}"> <input type="submit" name="submit" value="View  your cart"
+                                                       class="button"/></a>
+            {#                </fieldset>#}
+            {#            </form>#}
+        </div>
+    </a>
+    <div class="w3l_header_right">
+        <ul>
+            <li class="dropdown profile_details_drop">
+                {% if user.id is not None %}
+{#                    <img src="{{ user.userInfo.image.url }}" class="img-responsive"/>#}
+{#                    <p>{{ user.username }}</p>#}
+                {% endif %}
 
-								<li><a href="/userPage">MY ACCOUNT </a></li>
-								<li><a href="/userShowOrder"> MY ORDER</a></li>
-								<li><a href="">CREATE ACCOUNT </a></li>
-								<li><a href="/userShowComments">MY COMMENT </a></li>
-								<li><a href="/login">Sign Up</a></li>
-								<li><a href="/logout">LIG OUT</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="w3l_header_right1">
-			<h2><a href="/contantus">Contact Us</a></h2>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
+                <a href=" " class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+                <div class="mega-dropdown-menu" style="width: 200px">
+                    <div class="header-btns-icon">
+                    </div>
+                    <div class="w3ls_vegetables">
+                        <ul class="dropdown-menu drp-mnu">
+
+                            <li><a href="/userPage">MY ACCOUNT </a></li>
+                            <li><a href="/userShowOrder"> MY ORDER</a></li>
+                            <li><a href="">CREATE ACCOUNT </a></li>
+                            <li><a href="/userShowComments">MY COMMENT </a></li>
+                            <li><a href="/login">Sign Up</a></li>
+                            <li><a href="/logout">LIG OUT</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div>
 <!-- script-for sticky-nav -->
-	<script>
-	$(document).ready(function() {
-		 var navoffeset=$(".agileits_header").offset().top;
-		 $(window).scroll(function(){
-			var scrollpos=$(window).scrollTop();
-			if(scrollpos >=navoffeset){
-				$(".agileits_header").addClass("fixed");
-			}else{
-				$(".agileits_header").removeClass("fixed");
-			}
-		 });
+<script>
+    $(document).ready(function () {
+        var navoffeset = $(".agileits_header").offset().top;
+        $(window).scroll(function () {
+            var scrollpos = $(window).scrollTop();
+            if (scrollpos >= navoffeset) {
+                $(".agileits_header").addClass("fixed");
+            } else {
+                $(".agileits_header").removeClass("fixed");
+            }
+        });
 
-	});
-	</script>
+    });
+</script>
 <!-- //script-for sticky-nav -->
-	<div class="logo_products">
-		<div class="container">
-			<div class="w3ls_logo_products_left">
-				<h1><a href="/home"><span>Grocery</span> Store</a></h1>
-			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="special_items">
-					<li><a href="">Events</a><i>/</i></li>
-					<li><a href="/aboutus">About Us</a><i>/</i></li>
-					<li><a href="">Best Deals</a><i>/</i></li>
-					<li><a href="">Services</a></li>
-                    <li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+{% for i in set %}
+<div class="logo_products">
+    <div class="container">
+        <div class="w3ls_logo_products_left">
+            <h1><a href="/home"><span>Grocery</span> Store</a></h1>
+        </div>
+        <div class="w3ls_logo_products_left1">
+            <ul class="special_items">
+                <li><a href="/aboutus">About Us</a><i>/</i></li>
+                    <li><a href="/sss">FAQ</a><i>/</i></li>
+                <li><a href="/contantus">Contact Us</a></li>
+                <li><i class="fa fa-phone" aria-hidden="true">/</i>{{ i.pageTe }}</li>
+                <li><i class="fa fa-envelope-o" aria-hidden="true">/</i><a href="mailto:hmodalhmod199@g.gmail.com">{{ i.smtpemail }}</a>
+                </li>
 
-				</ul>
-			</div>
+            </ul>
+        </div>
 
-			<div class="clearfix"> </div>
-		</div>
-	</div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% endfor %}
 <!-- //header -->
 <!-- banner -->
 
-	<div class="banner">
-        {% if title == "Home page " or title == 'Category pange'  or title == 'User page' or title == 'producte Page' or title == 'Show Cart'  %}
+<div class="banner">
+    {% if title == "Home page " or title == 'Category pange'  or title == 'User page' or title == 'producte Page' or title == 'Show Cart' %}
 
 
-		<div class="w3l_banner_nav_left">
-			<nav class="navbar nav_bottom">
-			 <!-- Brand and toggle get grouped for better mobile display -->
-			  <div class="navbar-header nav_2">
-				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-mega-dropdown-tabs">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-			   </div>
-			   <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="w3l_banner_nav_left">
+        <nav class="navbar nav_bottom">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                        data-target="#bs-mega-dropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
 
 
-				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav nav_1">
-{#  					<li><a href="products.html">Branded Foods</a></li>#}
-{#						<li><a href="household.html">Households</a></li>#}
-{##}
-{#                         <ul>#}
-{#                        {% recursetree cate %}#}
-{#						<li class="dropdown mega-dropdown active">#}
-{#                        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ node.name }}<span class="caret"></span></a>#}
-{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
-{#								<div class="w3ls_vegetables">#}
-{#									<ul>#}
-{#                                  {% if not node.is_leaf_node %}#}
-{#                                         <ul class="children">#}
-{#                                             <li><a href="">{{ children }}</a></li>#}
-{##}
-{##}
-{#                                          </ul>#}
-{#                                     {% endif %}#}
-{##}
-{#                                        </div>#}
-{#							</div>#}
-{#						</li>#}
-{#                              {% endrecursetree %}#}
-{#                         </ul>#}
-{##}
-{##}
-{#						<li class="dropdown mega-dropdown active">#}
-{#							<a href="" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>#}
-{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
-{#								<div class="w3ls_vegetables">#}
-{#									<ul>#}
-{#										<li><a href="vegetables.html">Vegetables</a></li>#}
-{#										<li><a href="vegetables.html">Fruits</a></li>#}
-{#									</ul>#}
-{#								</div>#}
-{#							</div>#}
-{#						</li>#}
-{#						<li><a href="kitchen.html">Kitchen</a></li>#}
-{#						<li><a href="short-codes.html">Short Codes</a></li>#}
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                <ul class="nav navbar-nav nav_1">
+                    {#  					<li><a href="products.html">Branded Foods</a></li>#}
+                    {#						<li><a href="household.html">Households</a></li>#}
+                    {##}
+                    {#                         <ul>#}
+                    {#                        {% recursetree cate %}#}
+                    {#						<li class="dropdown mega-dropdown active">#}
+                    {#                        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ node.name }}<span class="caret"></span></a>#}
+                    {#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+                    {#								<div class="w3ls_vegetables">#}
+                    {#									<ul>#}
+                    {#                                  {% if not node.is_leaf_node %}#}
+                    {#                                         <ul class="children">#}
+                    {#                                             <li><a href="">{{ children }}</a></li>#}
+                    {##}
+                    {##}
+                    {#                                          </ul>#}
+                    {#                                     {% endif %}#}
+                    {##}
+                    {#                                        </div>#}
+                    {#							</div>#}
+                    {#						</li>#}
+                    {#                              {% endrecursetree %}#}
+                    {#                         </ul>#}
+                    {##}
+                    {##}
+                    {#						<li class="dropdown mega-dropdown active">#}
+                    {#							<a href="" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>#}
+                    {#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+                    {#								<div class="w3ls_vegetables">#}
+                    {#									<ul>#}
+                    {#										<li><a href="vegetables.html">Vegetables</a></li>#}
+                    {#										<li><a href="vegetables.html">Fruits</a></li>#}
+                    {#									</ul>#}
+                    {#								</div>#}
+                    {#							</div>#}
+                    {#						</li>#}
+                    {#						<li><a href="kitchen.html">Kitchen</a></li>#}
+                    {#						<li><a href="short-codes.html">Short Codes</a></li>#}
 
                     {% load mptt_tags %}
 
-                               {% recursetree cate %}
-                                  <li class="dropdown">
-                                  <a href="/home/producteCategory/{{ node.id }}" class="dropdown-toggle"  {% if not node.is_leaf_node %} data-toggle="dropdown"  {% endif %}>{{ node.name }}<span class="caret"></span></a>
-						        	<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-							        	<div class="w3ls_vegetables">
-						   		      <ul>
-
-
-                                          {% if not node.is_leaf_node %}
-{#                                          <ul class="children">#}
-                                          <li><a href="/home/producteCategory/{{ node.id }}">{{ children }}</a></li>
-
-                                                </ul>
-                                             {% endif %}
-                                               </div>
+{#                    {% recursetree cate %}#}
+{#                        <li class="dropdown">#}
+{#                            <a href="/home/producteCategory/{{ node.id }}" class="dropdown-toggle"#}
+{#                                    {% if not node.is_leaf_node %}#}
+{#                               data-toggle="dropdown"  {% endif %}>{{ node.name }}<span class="caret"></span></a>#}
+{#                            <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+{#                                <div class="w3ls_vegetables">#}
+{#                                    <ul>#}
+{#                                        {% if not node.is_leaf_node %}#}
+{#                                            <li><a href="/home/producteCategory/{{ node.id }}">{{ children }}</a></li>#}
+{#                                            </ul>#}
+{#                                        {% endif %}#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </li>#}
+{#                    {% endrecursetree %}#}
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+                        {% for cat in cate %}
+                            {% if cat.parent == None %}
+						<li class="dropdown mega-dropdown ">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{cat.name}}</a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+                                        {% for child in cat.children.all %}
+										<li><a href="/home/producteCategory/{{ child.id }}">{{ child.name }}</a></li>
+                                        {% endfor %}
+									</ul>
+								</div>
 							</div>
 						</li>
-                                         {% endrecursetree %}
-                                       </ul>
-
-
-{#						<li class="dropdown">#}
-{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>#}
-{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
-{#								<div class="w3ls_vegetables">#}
-{#									<ul>#}
-{#										<li><a href="drinks.html">Soft Drinks</a></li>#}
-{#										<li><a href="drinks.html">Juices</a></li>#}
-{#									</ul>#}
-{#								</div>#}
-{#							</div>#}
-{#						</li>#}
-{#						<li><a href="pet.html">Pet Food</a></li>#}
-{#						<li class="dropdown">#}
-{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>#}
-{#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
-{#								<div class="w3ls_vegetables">#}
-{#									<ul>#}
-{#										<li><a href="frozen.html">Frozen Snacks</a></li>#}
-{#										<li><a href="frozen.html">Frozen Nonveg</a></li>#}
-{#									</ul>#}
-{#								</div>#}
-{#							</div>#}
-{#						</li>#}
-{#						<li><a href="bread.html">Bread & Bakery</a></li>#}
+                            {% endif %}
+                        {% endfor %}
 					</ul>
-				 </div><!-- /.navbar-collapse -->
-			</nav>
-
-        {% endif %}
-
-		</div>
+				 </div>
+                </ul>
 
 
-		{% block saidbar%}
-		{% endblock%}
-{% block mainblock%}
-{% endblock%}
+                {#						<li class="dropdown">#}
+                {#							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>#}
+                {#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+                {#								<div class="w3ls_vegetables">#}
+                {#									<ul>#}
+                {#										<li><a href="drinks.html">Soft Drinks</a></li>#}
+                {#										<li><a href="drinks.html">Juices</a></li>#}
+                {#									</ul>#}
+                {#								</div>#}
+                {#							</div>#}
+                {#						</li>#}
+                {#						<li><a href="pet.html">Pet Food</a></li>#}
+                {#						<li class="dropdown">#}
+                {#							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>#}
+                {#							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">#}
+                {#								<div class="w3ls_vegetables">#}
+                {#									<ul>#}
+                {#										<li><a href="frozen.html">Frozen Snacks</a></li>#}
+                {#										<li><a href="frozen.html">Frozen Nonveg</a></li>#}
+                {#									</ul>#}
+                {#								</div>#}
+                {#							</div>#}
+                {#						</li>#}
+                {#						<li><a href="bread.html">Bread & Bakery</a></li>#}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
 
-<!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="col-md-3 w3_footer_grid">
-				<h3>information</h3>
-				<ul class="w3_footer_grid_list">
-					<li><a href="{% static  'events.html">Events</a></li>
-					<li><a href="{% static  'about.html">About Us</a></li>
-					<li><a href="{% static  'products.html">Best Deals</a></li>
-					<li><a href="{% static  'services.html">Services</a></li>
-					<li><a href="{% static  'short-codes.html">Short Codes</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 w3_footer_grid">
-				<h3>policy info</h3>
-				<ul class="w3_footer_grid_list">
-					<li><a href="{% static  'faqs.html">FAQ</a></li>
-					<li><a href="{% static  'privacy.html">privacy policy</a></li>
-					<li><a href="{% static  'privacy.html">terms of use</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 w3_footer_grid">
-				<h3>what in stores</h3>
-				<ul class="w3_footer_grid_list">
-					<li><a href="{% static  'pet.html">Pet Food</a></li>
-					<li><a href="{% static  'frozen.html">Frozen Snacks</a></li>
-					<li><a href="{% static  'kitchen.html">Kitchen</a></li>
-					<li><a href="{% static  'products.html">Branded Foods</a></li>
-					<li><a href="{% static  'household.html">Households</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 w3_footer_grid">
-				<h3>twitter posts</h3>
-				<ul class="w3_footer_grid_list1">
-					<li><label class="fa fa-twitter" aria-hidden="true"></label><i>01 day ago</i><span>Non numquam <a href="{% static  '#">http://sd.ds/13jklf#</a>
+    {% endif %}
+
+    </div>
+
+
+    {% block saidbar %}
+    {% endblock %}
+    {% block mainblock %}
+    {% endblock %}
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-3 w3_footer_grid">
+                <h3>information</h3>
+                <ul class="w3_footer_grid_list">
+                    <li><a href="#">Events</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="#">Best Deals</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Short Codes</a></li>
+                </ul>
+            </div>
+            <div class=" col-md-3 w3_footer_grid">
+                <h3>policy info</h3>
+                <ul class="w3_footer_grid_list">
+                    <li><a href="/sss">FAQ</a></li>
+                    <li><a href="#">privacy policy</a></li>
+                    <li><a href="#">terms of use</a></li>
+                </ul>
+            </div>
+            <div class=" col-md-3 w3_footer_grid">
+                <h3>what in stores</h3>
+                <ul class="w3_footer_grid_list">
+                    <li><a href="#">Pet Food</a></li>
+                    <li><a href="#">Frozen Snacks</a></li>
+                    <li><a href="#">Kitchen</a></li>
+                    <li><a href="#">Branded Foods</a></li>
+                    <li><a href="#">Households</a></li>
+                </ul>
+            </div>
+            <div class=" col-md-3 w3_footer_grid">
+                <h3>twitter posts</h3>
+                <ul class="w3_footer_grid_list1">
+                    <li><label class="fa fa-twitter" aria-hidden="true"></label><i>01 day
+                        ago</i><span>Non numquam <a
+                            href="#">http://sd.ds/13jklf#</a>
 						eius modi tempora incidunt ut labore et
-						<a href="{% static  '#">http://sd.ds/1389kjklf#</a>quo nulla.</span></li>
-					<li><label class="fa fa-twitter" aria-hidden="true"></label><i>02 day ago</i><span>Con numquam <a href="{% static  '#">http://fd.uf/56hfg#</a>
+						<a href="#">http://sd.ds/1389kjklf#</a>quo nulla.</span></li>
+                    <li><label class="fa fa-twitter" aria-hidden="true"></label><i>02 day
+                        ago</i><span>Con numquam <a href="#">http://fd.uf/56hfg#</a>
 						eius modi tempora incidunt ut labore et
-						<a href="{% static  '#">http://fd.uf/56hfg#</a>quo nulla.</span></li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-			<div class="agile_footer_grids">
-				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h4>100% secure payments</h4>
-						<img src="{% static 'front/images/card.png' %}" alt=" " class="img-responsive" />
-					</div>
-				</div>
-				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h5>connect with us</h5>
-						<ul class="agileits_social_icons">
-							<li><a href="{% static  '#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="{% static  '#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="{% static  '#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-							<li><a href="{% static  '#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="{% static  '#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="wthree_footer_copy">
-				<p>© 2016 Grocery Store. All rights reserved | Design by <a href="{% static  'http://w3layouts.com/">W3layouts</a></p>
-			</div>
-		</div>
-	</div>
-<!-- //footer -->
-<!-- Bootstrap Core JavaScript -->
-{#<script src="{% static 'front/js/bootstrap.min.js' %}"> </script>#}
-{#<script>#}
-{#$(document).ready(function(){#}
-{#    $(".dropdown").hover(#}
-{#        function() {#}
-{#            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");#}
-{#            $(this).toggleClass('open');#}
-{#        },#}
-{#        function() {#}
-{#            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");#}
-{#            $(this).toggleClass('open');#}
-{#        }#}
-{#    );#}
-{#});#}
-{#</script>#}
-{#<!-- here stars scrolling icon -->#}
-{#	<script type="text/javascript">#}
-{#		$(document).ready(function() {#}
-{#			/*#}
-{#				var defaults = {#}
-{#				containerID: 'toTop', // fading element id#}
-{#				containerHoverID: 'toTopHover', // fading element hover id#}
-{#				scrollSpeed: 1200,#}
-{#				easingType: 'linear'#}
-{#				};#}
-{#			*/#}
-{##}
-{#			$().UItoTop({ easingType: 'easeOutQuart' });#}
-{##}
-{#			});#}
-{#	</script>#}
-{#<!-- //here ends scrolling icon -->#}
-<script src="{% static  'front/js/minicart.js' %}"></script>
-<script>
-		paypal.minicart.render();
+						<a href="#">http://fd.uf/56hfg#</a>quo nulla.</span></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="agile_footer_grids">
+                <div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+                    <div class="w3_footer_grid_bottom">
+                        <h4>100% secure payments</h4>
+                        <img src="{% static 'front/images/card.png' %}" alt=" " class="img-responsive"/>
+                    </div>
+                </div>
+                <div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+                    <div class="w3_footer_grid_bottom">
+                        <h5>connect with us</h5>
+                        {% for j in set %}
+                        <ul class="agileits_social_icons">
 
-		paypal.minicart.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
+                            <li><a href="{{ j.pagefa }}" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ j.pagetw }}" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ j.pageyt }}" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ j.pageTe }}" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            </li>
+                            <li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                        </ul>
+{% endfor %}
 
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
+                    </div>
+                </div>
+                <div class=" clearfix">
+                </div>
+            </div>
+            <div class="wthree_footer_copy">
+                <p>© 2016 Grocery Store. All rights reserved | Design by <a
+                        href="">W3layouts</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'front/js/bootstrap.min.js' %}"> </script>
+    <script>
+    $(document).ready(function(){
+        $(".dropdown").hover(
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+                $(this).toggleClass('open');
+            },
+            function() {
+                $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+    </script>
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {##}
+            {#var defaults = {#}
+            {#containerID: 'toTop', // fading element id#}
+            {#containerHoverID: 'toTopHover', // fading element hover id#}
+            {#scrollSpeed: 1200,#}
+            {#easingType: 'linear'#}
+            {
+                #};
+                #}
 
-	</script>
-</body>
-</html>
+
+                $().UItoTop({easingType: 'easeOutQuart'});
+
+            }
+        );
+    </script>
+    <script src="{% static  'front/js/minicart.js' %}"></script>
+    <script> paypal.minicart.render();
+
+    paypal.minicart.cart.on('checkout', function (evt) {
+        var items = this.items(),
+            len = items.length,
+            total = 0,
+            i;
+
+        // Count the number of each item in the cart
+        for (i = 0; i < len; i++) {
+            total += items[i].get('quantity');
+        }
+
+        if (total < 3) {
+            alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            evt.preventDefault();
+        }
+    });
+
+    </script>
+    </html>

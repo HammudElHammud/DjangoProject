@@ -42,6 +42,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 {% endblock%}
 
 {% block mainblock%}
+    <div class="products-breadcrumb">
+		<div class="container" style="height: 20px">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/home">Home</a><span>|</span></li>
+				<li>Category</li>
+			</ul>
+		</div>
+	</div>
 
 <!-- banner -->
 	<div class="banner">
@@ -71,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<img src="{{i.image.url}}" alt=" " class="img-responsive" />
 						<div class="mask">
 							<h4>{{ i.name }}</h4>
-							<p>{{ i.description }}</p>
+							<p>{{ i.description | safe}}</p>
 						</div>
 					</div>
 					<h4>{{ i.name }}</h4>

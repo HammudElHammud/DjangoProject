@@ -1,47 +1,58 @@
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Main,UserProfile
-from forSale.models import Forslar,Category,Comment
+from .models import Main,UserProfile,FAQ
+from forSale.models import Forslar, Category,Comment
 from category.models import category
 from contentus.models import Contentus
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import auth
 from django.contrib.auth.models import User
 from order.models import ShopCart,Order,OrderProduct
+from django.db.models import Q
 import uuid
 
 from django.http import HttpResponse
+import json
 
 
 
 def home(request):
     pageName = 'Home page '
+    userInfo = request.user
+
     set = Main.objects.filter(pk = 1)
     cate = Category.objects.all()
     sale = Forslar.objects.all()[:3]
     nod = Forslar.objects.all()
-    print(   type(cate ))
-    print(set)
 
-    return render(request,'front/home.html',{'sale':sale, 'cate':  Category.objects.all(),'set':set, 'title':pageName,'nod':nod})
+    return render(request,'front/home.html',{'sale':sale, 'cate':  Category.objects.all(),'set':set, 'title':pageName,'nod':nod ,'userInfo':userInfo})
 
 def aboutus(request):
     pageName = 'AboutUs pange'
     set = Main.objects.filter(pk = 1)
     return render(request,'front/about.html',{'set':set,'title':pageName})
 
+
+def faq(request):
+      pageName =  'Sıkça Sorulan Sorular'
+      set = Main.objects.filter(pk=1)
+
+      cate = Category.objects.all()
+      faqs  = FAQ.objects.all().order_by('-id')
+
+      return render(request,'front/faq.html',{'title':pageName,'cate':cate,'faqs':faqs,'set':set})
+
 def producte(request,pk):
     pageName = 'producte Page'
+    set = Main.objects.filter(pk = 1)
+
     cate = Category.objects.all()
     comment = Comment.objects.filter(product__id= pk, status = 'False')
     userInfo = request.user
     sale =  Forslar.objects.filter(pk=pk)
-    dayproducte = Forslar.objects.all()[:3]
-    lastproducte = Forslar.objects.all()[:2]
-    print(comment,'dffsffds')
 
-    return render(request,'front/producte.html',{'userInfo' :userInfo,'sale':sale,'cate': cate,'dayproducte':dayproducte,'lastproduct':lastproducte,'title':pageName,'comment':comment})
+    return render(request,'front/producte.html',{'userInfo' :userInfo,'sale':sale,'cate': cate,'title':pageName,'comment':comment,'set':set})
 
 def  addComment(request, pk):
     pageName = ' producte Page'
@@ -70,6 +81,7 @@ def  addComment(request, pk):
 
 @login_required(login_url = '/login')
 def AddToCart(request,pk):
+    set = Main.objects.filter(pk = 1)
 
     sale = Forslar.objects.filter(pk=pk)
     checkProduct= ShopCart.objects.filter(pk=pk)
@@ -112,15 +124,17 @@ def AddToCart(request,pk):
             data.product = sale[0]
             data.quantity = 1
             data.save()
-            return redirect('/home/producte/' + pk + '/')
+    return redirect('/home/producte/' + pk + '/')
 
 
 
     return redirect('/home/producte/' + pk + '/')
 
-
+@login_required(login_url = '/login')
 def showCart(request):
     pageName = ' Show Cart'
+    set = Main.objects.filter(pk = 1)
+
     cate = Category.objects.all()
     currentUser = request.user
     userCart = ShopCart.objects.filter(user_id = currentUser.id)
@@ -128,21 +142,24 @@ def showCart(request):
     for r in userCart:
         total += r.product.pric *r.quantity
 
-    return render(request,'front/ShowCart.html',{ 'userCart':userCart ,'title': pageName,'cate':cate ,'total':total})
+    return render(request,'front/ShowCart.html',{ 'userCart':userCart ,'title': pageName,'cate':cate ,'total':total,'set':set})
 
 
 
-
+@login_required(login_url = '/login')
 def deleteProdcutCart(request,pk):
     b = ShopCart.objects.get(pk=pk)
     b.delete()
     return redirect('/showCart')
 
 
-
+@login_required(login_url = '/login')
 def  orderProduct(request):
     cate = category.objects.all()
+    set = Main.objects.filter(pk = 1)
+
     current_user = request.user
+
     profile = UserProfile.objects.get(user_id=current_user.id)
 
     shopCart  = ShopCart.objects.filter(user_id = current_user.id)
@@ -171,7 +188,6 @@ def  orderProduct(request):
             detial.order_id  = data.id
             detial.product_id = rs.product_id
             detial.quantity = rs.quantity
-            print(rs.quantity)
             detial.user_id = current_user.id
             product = Forslar.objects.get(id = rs.product_id)
             product.amount -= rs.quantity
@@ -179,34 +195,41 @@ def  orderProduct(request):
             detial.price = rs.product.pric
             detial.amount = rs.amount
             detial.save()
-
+        return redirect('/home')
         ShopCart.objects.filter(user_id = current_user.id).delete()
 
-    return render(request, 'front/shopCartProduct.html',{'profile':profile})
+    return render(request, 'front/shopCartProduct.html',{'profile':profile ,'set':set})
 
+
+@login_required(login_url = '/login')
 def userShowOrder(request):
     cate = Category.objects.all()
+    set = Main.objects.filter(pk = 1)
+
     current_user = request.user
     userOrder = Order.objects.filter(user_id = current_user.id)
-    print(current_user.id)
-    return render(request,'front/userShowOrder.html',{'cate':cate,'userOrder':userOrder})
+    return render(request,'front/userShowOrder.html',{'cate':cate,'userOrder':userOrder ,'set':set})
 
 def userShowProductDetial(request,pk):
     cate = Category.objects.all()
+    set = Main.objects.filter(pk = 1)
+
     current_user = request.user
     order = Order.objects.filter(user_id=current_user.id,id =pk)
     orderItems = OrderProduct.objects.filter(order_id = pk)
     print(order)
 
 
-    return render(request,'front/userShowProductDetail.html',{'cate':cate,'order':order,'orderItems':orderItems})
+    return render(request,'front/userShowProductDetail.html',{'cate':cate,'order':order,'orderItems':orderItems,'set':set})
 
 def userShowComments(request):
     cate = Category.objects.all()
+    set = Main.objects.filter(pk = 1)
+
     current_user = request.user
     comments = Comment.objects.filter(user_id=current_user.id)
 
-    return render(request,'front/userShowComments.html',{'comments':comments})
+    return render(request,'front/userShowComments.html',{'comments':comments,'set':set})
 
 def deleteUserComments(request,pk):
     b = Comment.objects.get(pk=pk)
@@ -239,7 +262,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request,user)
-                return render(request,'front/login.html')
+                return redirect('login')
 
 
     return redirect('/home/')
@@ -247,6 +270,36 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return render(request,'front/login.html')
+
+def searchProduct(request):
+    pageName = 'Home page '
+
+    set = Main.objects.filter(pk=1)
+    cate = Category.objects.all()
+    sale = Forslar.objects.all()[:3]
+    nod = Forslar.objects.all()
+
+
+    if request.method == 'POST':
+         set = Main.objects.filter(pk=1)
+         cate = Category.objects.all()
+         query = request.POST.get('Product')
+         Products = Forslar.objects.filter(name__icontains = query)
+
+         return render(request,'front/searchProduct.html',{'cate':cate,'Products':Products ,'set':set})
+
+    return render(request, 'front/home.html',{'sale': sale, 'cate': Category.objects.all(), 'set': set, 'title': pageName, 'nod': nod,'set':set})
+
+def auto_search_product(request):
+    query = request.GET.get('query')
+    if len(query) == 0:
+        return HttpResponse('{}')
+    else:
+        products = Forslar.objects.filter(Q(name__icontains = query) | Q(description__icontains = query) | Q(detail__icontains = query))
+        results = {}
+        for product in products:
+            results[product.id] = product.name
+        return HttpResponse(json.dumps(results))
 
 
 def register(request):
@@ -263,24 +316,29 @@ def register(request):
                     user = User.objects.create_user(username, useremail, userpassword)
 
 
-    return render(request, 'front/home.html',{'title':pageName,'cate':cate})
+    return redirect('/home')
 
 
 
 def userPage(request):
     pageName = 'User page '
+    set = Main.objects.filter(pk = 1)
+
     cate = Category.objects.all()
 
-
-    return render(request, 'front/UserPage.html',{'title':pageName,'cate':cate})
+    return render(request, 'front/UserPage.html',{'title':pageName,'cate':cate,'set':set})
 def UserProfil(request):
     userinfo = UserProfile.objects.get(user=request.user)
+    set = Main.objects.filter(pk = 1)
 
+    # print(userinfo.username)
 
-    return  render(request,'front/userProfil.html',{'userinfo':userinfo})
+    return  render(request,'front/userProfil.html',{'userinfo':userinfo,'set':set})
 
 def userUpdate(request):
     userinfo = UserProfile.objects.get(user=request.user)
+    set = Main.objects.filter(pk = 1)
+
     if request.method == 'POST':
         userName = request.POST.get('name')
         userphone = request.POST.get('phone')
@@ -302,10 +360,12 @@ def userUpdate(request):
 
         return render(request,'front/userProfil.html',{'userInfo':userinfo})
     userinfo = UserProfile.objects.get(user=request.user)
-    return render(request,'front/userUpdate.html',{'userInfp':userinfo})
+    return render(request,'front/userUpdate.html',{'userInfp':userinfo ,'set':set})
 
 def userChangePassword(request):
     userinfo = UserProfile.objects.get(user=request.user)
+    set = Main.objects.filter(pk = 1)
+
     if request.method == 'POST':
         oldPassword  = request.POST.get('oldpassword')
         newPassword  = request.POST.get('newpassword')
@@ -321,10 +381,12 @@ def userChangePassword(request):
              print("nnnnoooooooooooooo")
 
 
-    return  render(request,'front/userChangePassword.html',{'userInfo': userinfo})
+    return  render(request,'front/userChangePassword.html',{'userInfo': userinfo,'set':set})
 
 
 def userAddProducte(request):
+    set = Main.objects.filter(pk = 1)
+
     pageName = 'User page '
     cate = Category.objects.all()
 
@@ -348,7 +410,7 @@ def userAddProducte(request):
 
         b = Forslar(userOwner = userOwner,name = name,stats = status,category = category,pric = price,amount = amount,image = image,size = size,description = description,detail =detail,slug = name,parent = None)
         b.save()
-        return render(request,'front/home.html',{'cate':cate,'title':pageName})
+        return redirect('/home')
 
 
 
@@ -356,7 +418,7 @@ def userAddProducte(request):
 
 
 
-    return render(request,'front/userAddProducte.html',{'cate':cate,'title':pageName})
+    return render(request,'front/userAddProducte.html',{'cate':cate,'title':pageName ,'set':set})
 
 
 
@@ -371,13 +433,15 @@ def userAddProducte(request):
 
 def producteCategory(request,pk):
     pageName = 'Category pange'
+    set = Main.objects.filter(pk = 1)
+
     cate = Category.objects.all()
     categoryData = Category.objects.get(pk= pk)
     produ = Forslar.objects.filter(category_id = pk)
 
 
 
-    return render(request,'front/producteCategory.html',{'cate':cate,'produ':produ,'title':pageName,'categoryData':categoryData})
+    return render(request,'front/producteCategory.html',{'cate':cate,'produ':produ,'title':pageName,'categoryData':categoryData,'set':set})
 
 
 

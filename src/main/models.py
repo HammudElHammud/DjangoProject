@@ -24,12 +24,12 @@ class Main(models.Model):
     company  = models.TextField(max_length=10000)
     smtpserver  = models.CharField(max_length=44)
     smtpemail  = models.CharField(max_length=44)
-    smtpPassword = models.CharField(max_length=15)
-    smtpPort  = models.CharField(max_length=15)
-    pagefa  = models.CharField(max_length=15)
-    pagetw  = models.CharField(max_length=15)
-    pageyt  = models.CharField(max_length=15)
-    pageLink  = models.CharField(max_length=15)
+    smtpPassword = models.CharField(max_length=150)
+    smtpPort  = models.CharField(max_length=150)
+    pagefa  = models.CharField(max_length=150)
+    pagetw  = models.CharField(max_length=150)
+    pageyt  = models.CharField(max_length=105)
+    pageLink  = models.CharField(max_length=150)
     pageTe = models.CharField(max_length=20,default=0)
     icon  = models.ImageField(blank=True,upload_to='images/')
 
@@ -71,4 +71,17 @@ class UserProfileForm(forms.ModelForm):
 
 
 
+class FAQ(models.Model):
+    STATUS = (
+        ('True', 'Evet'),
+        ('False', 'Hayir'),
 
+    )
+    orderNumber = models.IntegerField()
+    question = models.CharField(default='', max_length=150)
+    answer = models.TextField(max_length=1000)
+    status = models.CharField(default='', max_length=40, choices=STATUS)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.question
