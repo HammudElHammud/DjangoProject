@@ -1,0 +1,116 @@
+{% extends 'front/master.html' %}
+{% load static %}
+{% block head %}
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{% block title %}{{ title }}{% endblock %}</title>
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="keywords" content="  {% block keywords %}Grocery Store Responsive web template  {% endblock %}, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+        <meta name="description" content="{% block description %}  anasayfa {% endblock %}">
+        <script type="application/x-javascript"> addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        } </script>
+        <!-- //for-mobile-apps -->
+        <link href="{% static  'front/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <link href="{% static  'front/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <!-- font-awesome icons -->
+        <link href="{% static  'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all"/>
+        <!-- //font-awesome icons -->
+        <!-- js -->
+        <script src="{% static  'front/js/jquery-1.11.1.min.js' %}"></script>
+        <!-- //js -->
+        <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic'
+              rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+              rel='stylesheet' type='text/css'>
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript" src="{% static  'front/js/move-top.js' %}"></script>
+        <script type="text/javascript" src="{% static  'front/js/easing.js' %}"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+                });
+            });
+        </script>
+        <!-- start-smoth-scrolling -->
+    </head>
+
+{% endblock %}
+
+{% block mainblock %}
+    <div class="products-breadcrumb">
+        <div class="container" style="height: 20px ">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="/home">Home</a><span>|</span></li>
+                <li> User Profile</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- mail -->
+    <div class="mail">
+        {#			<h3>Mail Us</h3>#}
+        <div class="agileinfo_mail_grids">
+            <div class="col-md-4 agileinfo_mail_grid_left">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list"
+                               data-toggle="list" href="userProfil.html" role="tab" aria-controls="home">User Page</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                               href="/userProfile" role="tab" aria-controls="profile">Profile</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                               href="/userAddProducte" role="tab" aria-controls="profile">Add Product</a>
+                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                               href="/userShowOrder" role="tab" aria-controls="messages">My Order</a>
+                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                               href="/userShowComments" role="tab" aria-controls="settings">My Comments</a>
+                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                               href="/logout" role="tab" aria-controls="settings">Log Out</a>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel"
+                                 aria-labelledby="list-home-list">...
+                            </div>
+                            <div class="tab-pane fade" id="list-profile" role="tabpanel"
+                                 aria-labelledby="list-profile-list">...
+                            </div>
+                            <div class="tab-pane fade" id="list-messages" role="tabpanel"
+                                 aria-labelledby="list-messages-list">...
+                            </div>
+                            <div class="tab-pane fade" id="list-settings" role="tabpanel"
+                                 aria-labelledby="list-settings-list">...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 agileinfo_mail_grid_right">
+                {% block userPage %}
+
+                {% endblock %}
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //mail -->
+    </div>
+    <div class="clearfix"></div>
+    </div>
+    <!-- //banner -->
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'front/master.html' %}
+{% load static %}
+{% block head%}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title%}{{ categoryData.name }}{% endblock %}</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="  {% block keywords%}Grocery Store Responsive web template  {% endblock%}, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="description" content="{% block description%}  anasayfa {% endblock%}">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="{% static  'front/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static  'front/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link href="{% static  'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //font-awesome icons -->
+<!-- js -->
+<script src="{% static  'front/js/jquery-1.11.1.min.js' %}"></script>
+<!-- //js -->
+<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript"src="{% static  'front/js/move-top.js' %}"></script>
+<script type="text/javascript"src="{% static  'front/js/easing.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+
+{% endblock%}
+
+{% block mainblock%}
+<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
+				<li>Search</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div>
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1"> {% load mptt_tags %}
+
+                               {% recursetree cate %}
+                                  <li class="dropdown">
+                                  <a href="/home/producteCategory/{{ node.id }}" class="dropdown-toggle"  {% if not node.is_leaf_node %} data-toggle="dropdown"  {% endif %}>{{ node.name }}<span class="caret"></span></a>
+						        	<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+							        	<div class="w3ls_vegetables">
+						   		      <ul>
+
+
+                                          {% if not node.is_leaf_node %}
+{#                                          <ul class="children">#}
+                                          <li><a href="/home/producteCategory/{{ node.id }}">{{ children }}</a></li>
+
+                                                </ul>
+                                             {% endif %}
+                                               </div>
+							</div>
+						</li>
+                                         {% endrecursetree %}
+                                       </ul>
+
+					</ul>
+				 </div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+<!-- events -->
+{#		#}
+        <div class="clearfix"></div>
+            <div class="container">
+   <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+                <a href="" class="btn btn-outline-info btn-sm pull-right"></a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                {% for i in Products %}
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                               <a href="/home/producte/{{ i.id }}" > <img class="img-responsive" src="{{ i.image.url }}" alt="prewiew" width="120" height="80"></a>
+                        </div>
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <a href="/home/producte/{{ i.id }}" > <h4 class="product-name"><strong>  {{ i.name }}</strong></h4></a>
+                            <h4>
+                                <small>{{ i.product.description }}</small>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                                <h6><strong>{{ i.pric }}<span class="text-muted">$</span></strong></h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+                    <hr>
+                    <!-- END PRODUCT -->
+                    <!-- PRODUCT -->
+
+                    <hr>
+                    <!-- END PRODUCT -->
+
+            </div>
+
+        </div>
+</div>
+<!-- //events -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+
+{% endblock %}

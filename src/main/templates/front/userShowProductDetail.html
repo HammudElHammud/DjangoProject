@@ -1,0 +1,103 @@
+{% extends 'front/UserPage.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block userPage %}
+
+    <div class="container">
+
+	<div class="row">
+     <div class="col-xl-4 col-lg-9">
+     <h3>Order Shopping Information</h3>
+         <br>
+				<div class="col-md-9">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Informatio n</th>
+							</tr>
+						</thead>
+						<tbody>
+                        {% for i in order %}
+							<tr>
+								<td>Name Surname</td>
+								<td><span class="badge">{{ i.first_name }}</span></td>
+							</tr>
+							<tr>
+								<td><code>Email</code></td>
+								<td><span class="badge badge-primary">{{ i.user.email }}</span></td>
+							</tr>
+							<tr>
+								<td><code>Phone</code></td>
+								<td><span class="badge badge-success">{{ i.phone }} </span></td>
+							</tr>
+							<tr>
+								<td><code>City</code></td>
+								<td><span class="badge badge-info">{{ i.city }}</span></td>
+							</tr>
+							<tr>
+								<td><code>Address</code></td>
+								<td><span class="badge badge-warning">{{ i.address }}</span></td>
+							</tr>
+							<tr>
+								<td><code>Status</code></td>
+								<td><span class="badge badge-danger">{{ i.status }}</span></td>
+							</tr>
+                            <tr>
+								<td><code>Date</code></td>
+								<td><span class="badge badge-danger">{{ i.create_at }}</span></td>
+							</tr>
+                        {% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+				<br>
+     </div>
+    </div>
+    </div>
+     <div class="container">
+
+	<div class="row">
+     <div class="col-xl-4 col-lg-9">
+      <h3>User Order Item Detail List</h3>
+
+
+			<div class="bs-docs-example">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Image</th>
+							<th>Product</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Status</th>
+							<th>Date</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% for i in orderItems %}
+						<tr>
+							<td ><a href="{% url 'producte' i.id %}"><img src="{{ i.product.image.url }}  " height="40"></a></td>
+							<td>{{ i.product.name }}</td>
+							<td>{{ i.price }}</td>
+							<td>{{ i.qunaity }}</td>
+							<td>{{ i.status }}</td>
+							<td>{{ i.create_at }}</td>
+							<td>{{ i.amount }}</td>
+
+						</tr>
+                    {% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+     </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'front/UserPage.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block userPage %}
+ <div class="container">
+
+	<div class="row">
+     <div class="col-xl-4 col-lg-9">
+      <h3>User Comments List</h3>
+
+
+			<div class="bs-docs-example">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Product</th>
+							<th>Rate</th>
+							<th>Subject</th>
+							<th>Comment</th>
+							<th>Date</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% for i in comments %}
+						<tr>
+							<td >{{ i.product.name }}</td>
+							<td>{{ i.rate }}</td>
+							<td>{{ i.subject }}</td>
+							<td>{{ i.comment }}</td>
+							<td>{{ i.create_at}}</td>
+							<td><a href="{% url 'deleteUserComments' i.id %}" class="btn-danger">Delete</a></td>
+
+
+						</tr>
+                    {% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+     </div>
+    </div>
+    </div>
+
+{% endblock %}

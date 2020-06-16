@@ -1,0 +1,98 @@
+{% extends 'front/master.html' %}
+{% load static %}
+{% block head%}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title%}{{ title }}{% endblock %}</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="  {% block keywords%}Grocery Store Responsive web template  {% endblock%}, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="description" content="{% block description%}  anasayfa {% endblock%}">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="{% static  'front/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static  'front/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link href="{% static  'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //font-awesome icons -->
+<!-- js -->
+<script src="{% static  'front/js/jquery-1.11.1.min.js' %}"></script>
+<!-- //js -->
+<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript"src="{% static  'front/js/move-top.js' %}"></script>
+<script type="text/javascript"src="{% static  'front/js/easing.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+
+{% endblock%}
+
+{% block mainblock%}
+    <!-- login -->
+		<div class="w3_login">
+			<h3>Sign In & Sign Up</h3>
+			<div class="w3_login_module">
+				<div class="module form-module">
+				  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+					<div class="tooltip">Click Me</div>
+				  </div>
+				  <div class="form">
+					<h2>Login to your account</h2>
+					<form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+					  <input type="text" name="Username" placeholder="Username" required=" ">
+					  <input type="password" name="Password" placeholder="Password" required=" ">
+					  <input type="submit" value="Login">
+
+					</form>
+				  </div>
+				  <div class="form">
+					<h2>Create an account</h2>
+					<form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+					  <input type="text" name="Username" placeholder="Username" required=" ">
+					  <input type="password" name="Password" placeholder="Password" required=" ">
+					  <input type="password" name="confpassword" placeholder="ConfPassword" required=" ">
+					  <input type="email" name="Email" placeholder="Email Address" required=" ">
+
+					  <input type="submit" value="Register">
+					</form>
+				  </div>
+				  <div class="cta"><a href="#">Forgot your password?</a></div>
+				</div>
+			</div>
+			<script>
+				$('.toggle').click(function(){
+				  // Switches the Icon
+				  $(this).children('i').toggleClass('fa-pencil');
+				  // Switches the forms
+				  $('.form').animate({
+					height: "toggle",
+					'padding-top': 'toggle',
+					'padding-bottom': 'toggle',
+					opacity: "toggle"
+				  }, "slow");
+				});
+			</script>
+		</div>
+<!-- //login -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+
+{% endblock %}
