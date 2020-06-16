@@ -3,23 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ab907ab7-58f9-4290-86e9-0a7a6eb087b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forSale/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/forSale/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/contantus.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/contantus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/master.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/producte.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/producte.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/templates/front/producteCategory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/front/producteCategory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/order/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/mail.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/mail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/short-codes.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/short-codes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/single.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/single.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +66,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1YJEBcStU5SP2sWCvVJ0MO2h9ic" />
   <component name="ProjectViewState">
@@ -127,17 +112,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:SQLite - db.sqlite3" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@4854dd5c" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -167,7 +142,8 @@
       <workItem from="1590954249515" duration="66633000" />
       <workItem from="1591269878732" duration="157000" />
       <workItem from="1591292364741" duration="1317000" />
-      <workItem from="1591385158854" duration="316000" />
+      <workItem from="1591385158854" duration="549000" />
+      <workItem from="1592219374008" duration="1877000" />
     </task>
     <task id="LOCAL-00001" summary="slider and page navigations">
       <created>1587063226297</created>
@@ -246,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589856464822</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="finish">
+      <created>1591385565508</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1591385565508</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +262,8 @@
     <MESSAGE value="start to  make shop cart" />
     <MESSAGE value=" finish checkout" />
     <MESSAGE value="show comments and order information in profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="show comments and order information in profile" />
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="23" key="#Inspections" timestamp="1589626087999">
@@ -294,18 +278,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1591095690842" />
-    <state x="455" y="168" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583407486092">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="455" y="168" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583407486092" />
     <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588964325537">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588964325537" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590013925719">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1591385562950">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1590013925719" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1591385562950" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1591095952778">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -334,28 +314,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="186" y="10" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587058437861" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1589856482550">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1592339162737">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589856482550" />
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1591385161802">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592339162737" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1592219373155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591385161802" />
+    <state x="391" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592219373155" />
+    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592339037608">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1592339037608" />
     <state x="339" y="17" width="672" height="676" key="search.everywhere.popup" timestamp="1591055810290">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="17" width="672" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591055810290" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/templates/front/producteCategory.html</url>
-          <line>36</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
